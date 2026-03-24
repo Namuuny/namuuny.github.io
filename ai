@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover how Figma AI, Midjourney, Galileo AI and Uizard are transforming smart city dashboards in 2026 — faster iteration, higher user adoption, and real sustainability impact.">
+  <title>How AI Tools Are Redesigning Smart City Dashboards in 2026</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body class="bg-zinc-950 text-white font-sans">
+  <div class="max-w-3xl mx-auto px-6 py-24 prose prose-invert">
+    <h1 class="text-5xl font-bold mb-8">How AI Tools Are Redesigning Smart City Dashboards in 2026</h1>
+    <p class="text-zinc-400 text-lg">With a background in fine arts and a Master’s in Designing for Smart Cities, I’ve spent years turning complex urban data into intuitive experiences. In 2026, AI tools have become my most powerful collaborators.</p>
+
+    <img src="YOUR-MIDJOURNEY-DASHBOARD-IMAGE.jpg" alt="AI-generated futuristic smart city dashboard" class="w-full rounded-3xl my-10">
+
+    <h2 class="text-3xl font-semibold mt-12 mb-6">The Challenge: Overwhelming Urban Data</h2>
+    <p>City operators manage traffic flows, energy consumption, air quality, flood risks, and public transport — all at once. Traditional dashboards are often cluttered, slow to update, and ignored by non-technical users.</p>
+
+    <h2 class="text-3xl font-semibold mt-12 mb-6">My AI-Powered Workflow in 2026</h2>
+    <ul class="list-disc pl-6 space-y-4 text-zinc-300">
+      <li><strong>Midjourney (v6+)</strong> — Rapid concept generation. Prompt example: “futuristic minimalist smart city control dashboard, dark mode, holographic data layers, sustainable green accents, cinematic lighting, ultra-detailed, 8K --ar 16:9 --stylize 250”</li>
+      <li><strong>Figma AI</strong> — Auto-layout suggestions, realistic content fill, micro-interaction proposals, and brand-consistent variations.</li>
+      <li><strong>Galileo AI & Uizard</strong> — Text-to-UI: “real-time urban mobility dashboard with flood risk overlay and accessibility features for elderly users” → editable high-fidelity screens in minutes.</li>
+    </ul>
+
+    <p class="mt-8">This workflow reduces prototype time from weeks to days while dramatically improving stakeholder buy-in through beautiful early visuals.</p>
+
+    <div class="bg-zinc-900 p-8 rounded-3xl my-12 italic">
+      “AI doesn’t replace human-centered thinking — it amplifies the artistic sensitivity and systems design skills that come from fine arts and smart cities training.”
+    </div>
+
+    <h2 class="text-3xl font-semibold mt-12 mb-6">Real Results</h2>
+    <p>In recent projects, AI-assisted dashboards increased end-user engagement by making interfaces more intuitive and visually balanced — exactly what my painting background taught me matters most.</p>
+
+    <h2 class="text-3xl font-semibold mt-12 mb-6">Get the Toolkit</h2>
+    <p>Download my free **AI Prompt Library for Smart City Dashboards** (50+ tested prompts for Midjourney, Figma AI, Galileo, and Uizard).</p>
+
+    <div class="flex flex-wrap gap-4 mt-10">
+      <a href="/download/ai-prompt-library.pdf" class="bg-emerald-500 hover:bg-emerald-600 text-black px-8 py-4 rounded-2xl font-semibold">Download Free Prompt Library</a>
+      <a href="https://calendly.com/yourusername/30min" target="_blank" class="border border-white hover:bg-white/10 px-8 py-4 rounded-2xl font-semibold">Book a 30-min Strategy Call</a>
+    </div>
+  </div>
+</body>
+</html>
