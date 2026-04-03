@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart City Design — Making Cities for People</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .hero-bg { background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat; }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+<!-- NEW: SCHEDULE CONSULTANCY SECTION -->
+  <section id="schedule" class="py-24 px-6 bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-semibold mb-6">Schedule a Consultancy Call</h2>
+        <p class="text-2xl text-gray-600 max-w-2xl mx-auto">
+          Book a 30 or 60-minute discovery call. We'll discuss your smart city project, urban challenges, or design needs.
+        </p>
+      </div>
+
+      <!-- Calendly Inline Embed – Replace YOUR-CALENDLY-LINK with your actual link -->
+      <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+        <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR-USERNAME/30min" style="min-width:320px;height:750px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      </div>
+
+      <p class="text-center text-sm text-gray-500 mt-8">
+        All calls are confidential. You will receive a Zoom/Google Meet link after booking.
+      </p>
+    </div>
+  </section>
+  </body>
+</html>
