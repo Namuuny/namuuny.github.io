@@ -11,43 +11,154 @@
     .hero-bg { background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat; }
   </style>
 </head>
-<body class="bg-white text-gray-900">
-    <!-- TOP NAV BAR -->
-  <nav class="fixed top-0 w-full bg-white shadow-sm z-50 border-b">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-      
-      <!-- Logo / Title -->
-   
+  <script>
+  // Simple Vanilla JS Calendar + Booking
+  let currentMonth = new Date().getMonth();
+  let currentYear = new Date().getFullYear();
+  let selectedDate = null;
+  let selectedTime = null;
+
+  const timeSlotsByDate = {
+    // Example: Add more dates as needed (YYYY-MM-DD)
+    "2026-04-15": ["09:00", "10:30", "14:00", "15:30"],
+    "2026-04-16": ["09:00", "11:00", "13:00"],
+    "2026-04-17": ["10:00", "14:00", "16:00"],
+    "2026-04-22": ["09:30", "11:30", "15:00"]
+    // You can expand this object or load from a JSON later
+  };
+
+  function renderCalendar() {
+    const calendarEl = document.getElementById('calendar');
+    calendarEl.innerHTML = '';
+
+    // Weekday headers
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    days.forEach(day => {
+      const div = document.createElement('div');
+      div.className = 'font-medium text-gray-500 py-2';
+      div.textContent = day;
+      calendarEl.appendChild(div);
+    });
+
+    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+    // Empty slots before first day
+    for (let i = 0; i < firstDay; i++) {
+      const empty = document.createElement('div');
+      empty.className = 'h-10';
+      calendarEl.appendChild(empty);
+    }
+
+    // Actual days
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dateStr = `${currentYear}-${String(currentMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+      const isAvailable = timeSlotsByDate[dateStr];
+
+      const dayEl = document.createElement('div');
+      dayEl.className = `h-10 flex items-center justify-center rounded-xl cursor-pointer transition hover:bg-teal-100 ${isAvailable ? 'bg-teal-50 font-medium' : 'text-gray-400'}`;
+      dayEl.textContent = day;
+
+      if (isAvailable) {
+        dayEl.onclick = () => selectDate(dateStr, day);
+      }
+      calendarEl.appendChild(dayEl);
+    }
+  }
+
+  function selectDate(dateStr, day) {
+    selectedDate = dateStr;
+    document.getElementById('selected-date-title').textContent = `Available times on ${day} ${new Date(selectedDate).toLocaleString('default', { month: 'long' })}`;
+    
+    const slotsContainer = document.getElementById('time-slots');
+    slotsContainer.innerHTML = '';
+
+    const slots = timeSlotsByDate[dateStr] || [];
+    
+    slots.forEach(slot => {
+      const btn = document.createElement('button');
+      btn.className = 'px-6 py-4 border border-gray-300 rounded-2xl hover:border-teal-600 hover:bg-teal-50 transition text-left';
+      btn.textContent = slot;
+      btn.onclick = () => selectTimeSlot(slot);
+      slotsContainer.appendChild(btn);
+    });
+
+    document.getElementById('booking-form').classList.add('hidden');
+  }
+
+  function selectTimeSlot(time) {
+    selectedTime = time;
+    document.getElementById('booking-date').value = selectedDate;
+    document.getElementById('booking-time').value = time;
+    document.getElementById('booking-form').classList.remove('hidden');
+    
+    // Optional: scroll to form
+    document.getElementById('booking-form').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Initial render
+  renderCalendar();
+
+  // Optional: Add month navigation buttons if you want (prev/next)
+</script>
   
-
-   <!-- Language Selector -->
-<a href="mn.html" 
-   class="flex items-center gap-1 px-3 py-1 text-sm cursor-pointer hover:bg-gray-50">
-  <span class="font-medium">🌐</span>
-  <span class="text-teal-600 font-semibold">EN</span>
-  <span class="text-gray-400">|</span>
-  <span>МН</span>
-</a>
-<!-- NEW: SCHEDULE CONSULTANCY SECTION -->
-  <section id="schedule" class="py-24 px-6 bg-gray-50">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-5xl font-semibold mb-6">Schedule a Consultancy Call</h2>
-        <p class="text-2xl text-gray-600 max-w-2xl mx-auto">
-          Book a 30 or 60-minute discovery call. We'll discuss your smart city project, urban challenges, or design needs.
-        </p>
-      </div>
-
-      <!-- Calendly Inline Embed – Replace YOUR-CALENDLY-LINK with your actual link -->
-      <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
-        <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR-USERNAME/30min" style="min-width:320px;height:750px;"></div>
-        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-      </div>
-
-      <p class="text-center text-sm text-gray-500 mt-8">
-        All calls are confidential. You will receive a Zoom/Google Meet link after booking.
-      </p>
+<!-- SCHEDULE CONSULTANCY - Built-in Calendar -->
+<section id="schedule" class="py-24 px-6 bg-gray-50">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-5xl font-semibold mb-6">Schedule a Consultancy Call</h2>
+      <p class="text-2xl text-gray-600">Choose a date and time that works for you. All sessions are 45 minutes.</p>
     </div>
-  </section>
-  </body>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+      <!-- Calendar -->
+      <div class="bg-white rounded-3xl shadow-xl p-8">
+        <h3 class="text-2xl font-medium mb-6 text-center">Select a Date</h3>
+        <div id="calendar" class="grid grid-cols-7 gap-1 text-center text-sm"></div>
+      </div>
+
+      <!-- Time Slots & Form -->
+      <div class="bg-white rounded-3xl shadow-xl p-8">
+        <h3 class="text-2xl font-medium mb-6" id="selected-date-title">Select a date to see available times</h3>
+        
+        <div id="time-slots" class="grid grid-cols-2 gap-3 mb-10"></div>
+
+        <!-- Booking Form (shown after time slot selected) -->
+        <div id="booking-form" class="hidden">
+          <form id="bookingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <input type="hidden" id="booking-date" name="date">
+            <input type="hidden" id="booking-time" name="time">
+            
+            <div class="space-y-6">
+              <div>
+                <label class="block text-sm font-medium mb-2">Your Name</label>
+                <input type="text" name="name" required class="w-full px-5 py-4 border border-gray-300 rounded-2xl focus:outline-none focus:border-teal-600">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-2">Email Address</label>
+                <input type="email" name="email" required class="w-full px-5 py-4 border border-gray-300 rounded-2xl focus:outline-none focus:border-teal-600">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-2">Project / Topic</label>
+                <textarea name="message" rows="3" placeholder="Briefly describe your smart city project..." class="w-full px-5 py-4 border border-gray-300 rounded-2xl focus:outline-none focus:border-teal-600"></textarea>
+              </div>
+              <button type="submit" class="w-full bg-teal-600 text-white py-5 rounded-2xl font-medium hover:bg-teal-700 transition">
+                Confirm Booking Request
+              </button>
+            </div>
+          </form>
+          <p class="text-xs text-gray-500 mt-6 text-center">You will receive a confirmation email shortly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- FOOTER (same) -->
+  <footer class="bg-gray-900 text-white py-12 px-6">
+    <div class="max-w-7xl mx-auto text-center text-sm">
+      © 2026 Smart City Design • All rights reserved
+    </div>
+  </footer>
+
+</body>
 </html>
