@@ -1,1 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart City Design — Making Cities for People</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .hero-bg { background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat; }
+  </style>
+</head>
+  <body class="bg-white text-gray-900">
+     <!-- TOP NAV BAR -->
+  <nav class="fixed top-0 w-full bg-white shadow-sm z-50 border-b">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      
+      <!-- Logo / Title -->
+   
+  
 
+   <!-- Language Selector -->
+<a href="schedule.html" 
+   class="flex items-center gap-1 px-3 py-1 text-sm cursor-pointer hover:bg-gray-50">
+  <span class="font-medium">🌐</span>
+  <span class="text-teal-600 font-semibold">EN</span>
+  <span class="text-gray-400">|</span>
+  <span>МН</span>
+</a> 
+ <div class="pt-24 pb-20 px-6">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-16">
+        <h1 class="text-5xl md:text-6xl font-semibold leading-tight">Let's discuss your project</h1>
+        <p class="mt-6 text-2xl text-gray-600">
+         45 минутын зөвлөх уулзалт товлох эсвэл бидэнд мессеж илгээн үү.
+        </p>
+      </div>
+
+      <!-- Scheduling + Contact Form -->
+      <div class="bg-white border border-gray-100 rounded-3xl shadow-xl p-10 md:p-12">
+        <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST" class="space-y-8">
+
+          <!-- Name -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Таний нэр</label>
+            <input type="text" name="name" required 
+                   class="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:border-teal-600 focus:outline-none text-lg">
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Имейл хаяг</label>
+            <input type="email" name="email" required 
+                   class="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:border-teal-600 focus:outline-none text-lg">
+          </div>
+
+          <!-- Preferred Date -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Тохиромжтой огноо</label>
+            <input type="date" name="preferred_date" required 
+                   class="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:border-teal-600 focus:outline-none text-lg">
+          </div>
+
+          <!-- Preferred Time -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Сонгосон цаг (45 минутын хугацаатай)</label>
+            <input type="time" name="preferred_time" required 
+                   class="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:border-teal-600 focus:outline-none text-lg"
+                   min="09:00" max="17:00" step="1800">
+          </div>
+
+          <!-- Project Description -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Төслийн тухай </label>
+            <textarea name="message" rows="5" placeholder="Таны ухаалаг хотын санаачлага, хотын сорилт, эсвэл ярилцахыг хүссэн зүйлээ товч тайлбарлана уу..."
+                      class="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:border-teal-600 focus:outline-none text-lg"></textarea>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" 
+                  class="w-full bg-teal-600 hover:bg-teal-700 text-white py-5 rounded-2xl font-semibold text-xl transition">
+           Мессеж илгээх & Уулзалт товлох
+          </button>
+        </form>
+
+        <p class="text-center text-sm text-gray-500 mt-10">
+          Би ихэвчлэн 1-2 ажлын дотор хариу өгдөг. Бүх уулзалтыг Zoom эсвэл Google Meet-ээр явуулна.
+        </p>
+      </div>
+    </div>
+  </div>
+<!-- FOOTER (same) -->
+  <footer class="bg-gray-900 text-white py-12 px-6">
+    <div class="max-w-7xl mx-auto text-center text-sm">
+      © 2026 Smart City Design • Бүх эрх хуулиар хамгаалагдсан
+    </div>
+  </footer>
+
+</body>
+</html>
