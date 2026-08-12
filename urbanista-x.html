@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urbanista X — The Future Starts Today | Smart City Design</title>
+  <meta name="description" content="Urbanista X is your empathetic AR tour guide for solo travelers in Ulaanbaatar. Historical stories, urban planning insights, real-time navigation and gamified future scavenger hunts.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            indigo: {
+              950: '#0B0F1A',
+              900: '#111827',
+              800: '#1E1B4B',
+            },
+            teal: {
+              400: '#2DD4BF',
+              500: '#14B8A6',
+              600: '#0D9488',
+              700: '#0F766E',
+            },
+            coral: {
+              400: '#FB7185',
+              500: '#F43F5E',
+            },
+            violet: {
+              400: '#A78BFA',
+              500: '#8B5CF6',
+              600: '#7C3AED',
+            },
+            luminous: '#E0F2FE',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Inter', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'glow': 'glow 3s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-12px)' },
+            },
+            glow: {
+              '0%': { boxShadow: '0 0 20px rgba(45, 212, 191, 0.3)' },
+              '100%': { boxShadow: '0 0 40px rgba(139, 92, 246, 0.5)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #2DD4BF 0%, #A78BFA 50%, #FB7185 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-bg {
+      background: radial-gradient(ellipse at 30% 20%, rgba(45, 212, 191, 0.15) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 60%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
+                  radial-gradient(ellipse at 50% 100%, rgba(251, 113, 133, 0.08) 0%, transparent 40%),
+                  #0B0F1A;
+    }
+    .card-glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .section-light {
+      background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+    }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="bg-indigo-950 text-white antialiased">
+
+  <!-- NAVIGATION -->
+  <nav class="fixed top-0 w-full z-50 bg-indigo-950/80 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-teal-400 via-violet-500 to-coral-400 flex items-center justify-center text-indigo-950 font-bold text-sm tracking-tight">UX</div>
+        <span class="font-display font-semibold text-lg tracking-tight group-hover:text-teal-400 transition">Urbanista X</span>
+      </a>
+      
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+        <a href="#meet" class="hover:text-teal-400 transition">Meet Her</a>
+        <a href="#how" class="hover:text-teal-400 transition">How It Works</a>
+        <a href="#hunts" class="hover:text-teal-400 transition">Future Hunts</a>
+        <a href="#educators" class="hover:text-teal-400 transition">Educators</a>
+        <a href="#team" class="hover:text-teal-400 transition">Team</a>
+        <a href="#funding" class="hover:text-teal-400 transition">Funding</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="indexmn.html" class="text-xs text-gray-400 hover:text-white transition flex items-center gap-1">
+          <span>🌐</span> EN | МН
+        </a>
+        <a href="#waitlist" class="hidden sm:inline-flex bg-teal-500 hover:bg-teal-400 text-indigo-950 font-semibold text-sm px-5 py-2.5 rounded-full transition shadow-lg shadow-teal-500/20">
+          Join Waitlist
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="hero-bg min-h-screen flex items-center pt-20 relative overflow-hidden">
+    <!-- Decorative floating orbs -->
+    <div class="absolute top-1/4 left-10 w-64 h-64 bg-teal-400/10 rounded-full blur-3xl animate-pulse-slow"></div>
+    <div class="absolute bottom-1/4 right-10 w-80 h-80 bg-violet-500/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1.5s;"></div>
+    
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-20 text-center relative z-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full card-glass text-xs font-medium text-teal-400 mb-8">
+        <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+        Launching November 2026 · Ulaanbaatar First
+      </div>
+      
+      <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tighter mb-6">
+        The future<br>
+        <span class="gradient-text">starts today</span>
+      </h1>
+      
+      <p class="max-w-2xl mx-auto text-lg sm:text-xl text-gray-300 leading-relaxed mb-4">
+        Meet <strong class="text-white">Urbanista X</strong> — your empathetic AI guide for solo travelers.
+      </p>
+      <p class="max-w-xl mx-auto text-base text-gray-400 mb-12">
+        Historical stories · Urban planning & architecture · Real-time AR navigation · Gamified scavenger hunts that show the city of tomorrow.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="#waitlist" class="bg-gradient-to-r from-teal-500 to-violet-500 hover:from-teal-400 hover:to-violet-400 text-white font-semibold px-8 py-4 rounded-full transition shadow-xl shadow-teal-500/25 text-base">
+          Get Early Access
+        </a>
+        <a href="#meet" class="card-glass hover:bg-white/10 text-white font-medium px-8 py-4 rounded-full transition text-base">
+          Meet Urbanista X →
+        </a>
+      </div>
+      
+      <p class="mt-10 text-sm text-gray-500">For tourists · Digital nomads · Gen Z · Educators · Curious kids</p>
+    </div>
+  </header>
+
+  <!-- MEET URBANISTA X -->
+  <section id="meet" class="py-24 sm:py-32 relative">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div>
+          <p class="text-teal-400 font-medium text-sm tracking-widest uppercase mb-4">The Persona</p>
+          <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight mb-6">
+            She came from a future that healed.
+          </h2>
+          <p class="text-gray-300 text-lg leading-relaxed mb-6">
+            Urbanista X is a futuristic, techy, playful-yet-sophisticated girl who looks like she stepped out of 2140. She is all-knowing and academic, yet warm, cheerful, sensitive and deeply empathetic. She treats every solo traveler like a close friend.
+          </p>
+          <p class="text-gray-400 leading-relaxed mb-8">
+            Her world overcame ecological collapse, political fragmentation and humanitarian crises. Now she walks the streets of Ulaanbaatar with you — not only telling you what a place <em>was</em>, but what it <em>can become</em>. She gives more than you ask for, because she remembers what it felt like to walk alone.
+          </p>
+          
+          <div class="flex flex-wrap gap-3">
+            <span class="px-4 py-2 rounded-full bg-teal-500/10 text-teal-400 text-sm border border-teal-500/20">Happy & Optimistic</span>
+            <span class="px-4 py-2 rounded-full bg-violet-500/10 text-violet-400 text-sm border border-violet-500/20">Caring & Empathetic</span>
+            <span class="px-4 py-2 rounded-full bg-coral-400/10 text-coral-400 text-sm border border-coral-400/20">Youthful & Colorful</span>
+            <span class="px-4 py-2 rounded-full bg-white/5 text-gray-300 text-sm border border-white/10">Playful + Sophisticated</span>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <div class="aspect-[4/5] rounded-3xl card-glass overflow-hidden relative animate-float">
+            <!-- Placeholder for character visual - gradient avatar -->
+            <div class="absolute inset-0 bg-gradient-to-br from-teal-500/20 via-violet-600/30 to-coral-500/20"></div>
+            <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
+              <div class="w-32 h-32 rounded-full bg-gradient-to-br from-teal-400 via-violet-500 to-coral-400 mb-6 flex items-center justify-center text-4xl font-bold text-indigo-950 shadow-2xl shadow-violet-500/40">
+                UX
+              </div>
+              <p class="font-display text-2xl font-semibold mb-2">Urbanista X</p>
+              <p class="text-gray-400 text-sm">Your friend from the future</p>
+              <p class="mt-6 text-teal-400 text-sm italic">“Every street holds a version of tomorrow. Let’s walk toward the one that healed.”</p>
+            </div>
+          </div>
+          <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-teal-400/20 rounded-full blur-2xl"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="py-24 sm:py-32 section-light text-gray-900">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="text-center mb-16">
+        <p class="text-teal-600 font-medium text-sm tracking-widest uppercase mb-3">The Experience</p>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight mb-4">More than a guide.<br>A future friend.</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto text-lg">Four layers that turn any walk through Ulaanbaatar into an unforgettable journey.</p>
+      </div>
+      
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
+          <div class="w-12 h-12 rounded-xl bg-teal-500/10 flex items-center justify-center text-2xl mb-5">📍</div>
+          <h3 class="font-display font-semibold text-lg mb-2">Real-time AR Navigation</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Point your phone and see floating guidance, safe routes and solo-friendly spots overlaid on the real city.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
+          <div class="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center text-2xl mb-5">🏛️</div>
+          <h3 class="font-display font-semibold text-lg mb-2">History + Urban Design</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Deep stories of architecture, planning decisions and the human lives that shaped every corner — narrated by someone who truly cares.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
+          <div class="w-12 h-12 rounded-xl bg-coral-400/10 flex items-center justify-center text-2xl mb-5">🎮</div>
+          <h3 class="font-display font-semibold text-lg mb-2">Gamified Future Hunts</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Scavenger hunts that unlock holographic visions of what each place could become in a healed future.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
+          <div class="w-12 h-12 rounded-xl bg-indigo-800/10 flex items-center justify-center text-2xl mb-5">💜</div>
+          <h3 class="font-display font-semibold text-lg mb-2">Empathy Layer</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">She notices when you’re tired, curious or lonely — and offers more than you asked for, like a real friend would.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUTURE HUNTS -->
+  <section id="hunts" class="py-24 sm:py-32">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="text-center mb-16">
+        <p class="text-teal-400 font-medium text-sm tracking-widest uppercase mb-3">Pilot Routes</p>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight mb-4">Central Ulaanbaatar<br><span class="gradient-text">Future Hunts</span></h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">Five interconnected stops that blend past, present and the possible future of Mongolia’s capital.</p>
+      </div>
+      
+      <div class="space-y-6">
+        <!-- Hunt cards -->
+        <div class="card-glass rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-start hover:bg-white/5 transition">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center font-display font-bold text-xl shrink-0">01</div>
+          <div>
+            <h3 class="font-display font-semibold text-xl mb-1">Sükhbaatar Square</h3>
+            <p class="text-teal-400 text-sm mb-3">Civic Heart → Regenerative Plaza</p>
+            <p class="text-gray-400 text-sm leading-relaxed">From revolutionary declaration ground to a living civic ecosystem where citizens and visitors co-create the next chapter of Mongolian democracy and culture.</p>
+          </div>
+        </div>
+        
+        <div class="card-glass rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-start hover:bg-white/5 transition">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-violet-400 to-violet-600 flex items-center justify-center font-display font-bold text-xl shrink-0">02</div>
+          <div>
+            <h3 class="font-display font-semibold text-xl mb-1">Gandantegchinlen Monastery</h3>
+            <p class="text-violet-400 text-sm mb-3">Spiritual Anchor → Living Cultural-Tech Hub</p>
+            <p class="text-gray-400 text-sm leading-relaxed">The monastery that survived the purges becomes a bridge between ancient wisdom and future technologies that serve compassion and community.</p>
+          </div>
+        </div>
+        
+        <div class="card-glass rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-start hover:bg-white/5 transition">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-coral-400 to-rose-500 flex items-center justify-center font-display font-bold text-xl shrink-0">03</div>
+          <div>
+            <h3 class="font-display font-semibold text-xl mb-1">Zaisan Memorial</h3>
+            <p class="text-coral-400 text-sm mb-3">Viewpoint of Memory → Climate Resilience Lookout</p>
+            <p class="text-gray-400 text-sm leading-relaxed">The hill that remembers wartime friendship now watches over a city learning to live in balance with its extreme climate and fragile ecology.</p>
+          </div>
+        </div>
+        
+        <div class="card-glass rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-start hover:bg-white/5 transition">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center font-display font-bold text-xl shrink-0">04</div>
+          <div>
+            <h3 class="font-display font-semibold text-xl mb-1">Bogd Khan Winter Palace</h3>
+            <p class="text-sky-400 text-sm mb-3">Royal Residence → Heritage of Adaptive Design</p>
+            <p class="text-gray-400 text-sm leading-relaxed">A palace that blended Mongolian, Chinese and European influences becomes a living lesson in cultural hybridity and resilient architecture.</p>
+          </div>
+        </div>
+        
+        <div class="card-glass rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-start hover:bg-white/5 transition">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center font-display font-bold text-xl shrink-0">05</div>
+          <div>
+            <h3 class="font-display font-semibold text-xl mb-1">Peace Avenue & Beatles Square</h3>
+            <p class="text-amber-400 text-sm mb-3">Everyday Street → Playful Public Realm</p>
+            <p class="text-gray-400 text-sm leading-relaxed">The artery of daily life and the unofficial monument to freedom become a continuous stage for youth culture, soft mobility and spontaneous joy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATORS & KIDS -->
+  <section id="educators" class="py-24 sm:py-32 section-light text-gray-900">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-teal-600 font-medium text-sm tracking-widest uppercase mb-3">Secondary Audience</p>
+          <h2 class="font-display text-4xl font-bold tracking-tight mb-6">Classrooms that walk the city.</h2>
+          <p class="text-gray-600 text-lg leading-relaxed mb-6">
+            Urbanista X turns every field trip and family outing into a living lesson in history, urban design, ecology and hope. Teachers get ready-made hunt packs. Kids collect future artifacts and stories they can share.
+          </p>
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-start gap-3"><span class="text-teal-500 mt-1">✓</span> Age-appropriate narrative modes</li>
+            <li class="flex items-start gap-3"><span class="text-teal-500 mt-1">✓</span> Curriculum-aligned urban planning & history modules</li>
+            <li class="flex items-start gap-3"><span class="text-teal-500 mt-1">✓</span> Group leaderboards and collaborative challenges</li>
+            <li class="flex items-start gap-3"><span class="text-teal-500 mt-1">✓</span> Offline-friendly content for school devices</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
+          <p class="text-sm font-medium text-gray-500 mb-4">Coming with launch</p>
+          <h3 class="font-display text-2xl font-semibold mb-3">Educator Early Access</h3>
+          <p class="text-gray-600 mb-6">Join the waitlist as an education professional and receive pilot classroom packs + AR filter kits for your students.</p>
+          <a href="#waitlist" class="inline-flex bg-teal-600 hover:bg-teal-500 text-white font-semibold px-6 py-3 rounded-full transition">Request Educator Access</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" class="py-24 sm:py-32">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="text-center mb-16">
+        <p class="text-teal-400 font-medium text-sm tracking-widest uppercase mb-3">Who’s Building This</p>
+        <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight">Urban planners + AR craft.</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="card-glass rounded-2xl p-8 text-center">
+          <div class="w-20 h-20 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 mx-auto mb-5 flex items-center justify-center text-2xl font-bold text-indigo-950">UP</div>
+          <h3 class="font-display font-semibold text-xl mb-1">Founder · Urban Planner & Designer</h3>
+          <p class="text-gray-400 text-sm">Deep knowledge of Mongolian urban systems, heritage and the lived experience of cities. The strategic and narrative heart of Urbanista X.</p>
+        </div>
+        <div class="card-glass rounded-2xl p-8 text-center">
+          <div class="w-20 h-20 rounded-full bg-gradient-to-br from-violet-400 to-violet-600 mx-auto mb-5 flex items-center justify-center text-2xl font-bold text-indigo-950">AR</div>
+          <h3 class="font-display font-semibold text-xl mb-1">Co-builder · Top-ranking AR Designer</h3>
+          <p class="text-gray-400 text-sm">World-class augmented reality craft. Turns future visions into experiences you can almost touch.</p>
+        </div>
+      </div>
+      
+      <div class="mt-12 text-center">
+        <p class="text-gray-400 max-w-2xl mx-auto">We are in conversation with high-level Mongolian ministry officials to explore collaboration on accurate heritage data, soft power storytelling and responsible tourism innovation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUNDING / CAMPAIGN -->
+  <section id="funding" class="py-24 sm:py-32 section-light text-gray-900">
+    <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+      <p class="text-teal-600 font-medium text-sm tracking-widest uppercase mb-3">Campaign Goal</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight mb-6">Raise awareness.<br>Raise funding.<br>Raise the future.</h2>
+      <p class="text-gray-600 text-lg mb-10 max-w-2xl mx-auto">
+        Launch window: <strong>November 2026</strong>. Campaign duration: multi-month ramp. Medium budget. Primary platforms: Instagram, TikTok, YouTube, Facebook, X. Content engine: AR filters, Reels, UGC challenges, influencer tips.
+      </p>
+      
+      <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-lg border border-gray-100 mb-10">
+        <div class="flex justify-between text-sm font-medium text-gray-500 mb-2">
+          <span>Pre-seed / Seed progress</span>
+          <span>Open</span>
+        </div>
+        <div class="h-3 bg-gray-100 rounded-full overflow-hidden mb-6">
+          <div class="h-full w-1/5 bg-gradient-to-r from-teal-500 to-violet-500 rounded-full"></div>
+        </div>
+        <p class="text-gray-600 mb-6">We are seeking partners, grants, strategic investors and early supporters who believe that the best way to shape the future of cities is to let people fall in love with them — one empathetic, gamified walk at a time.</p>
+        <a href="#waitlist" class="inline-flex bg-indigo-950 hover:bg-indigo-900 text-white font-semibold px-8 py-3.5 rounded-full transition">Talk to the Team</a>
+      </div>
+      
+      <p class="text-sm text-gray-500">Unique selling point: future possibilities + genuine friendship for solo travelers. She concentrates on what a place can become, and she always gives more than asked.</p>
+    </div>
+  </section>
+
+  <!-- WAITLIST CTA -->
+  <section id="waitlist" class="py-24 sm:py-32 hero-bg relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-t from-indigo-950 via-transparent to-transparent"></div>
+    <div class="max-w-2xl mx-auto px-5 sm:px-8 text-center relative z-10">
+      <h2 class="font-display text-4xl sm:text-5xl font-bold tracking-tight mb-4">Walk with her.</h2>
+      <p class="text-gray-300 text-lg mb-10">Join the waitlist for early access, exclusive AR filters, and the first Future Hunts in Ulaanbaatar.</p>
+      
+      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); alert('Thank you! You are on the list. (Connect this form to your email tool)');">
+        <input type="email" required placeholder="your@email.com" class="flex-1 px-5 py-3.5 rounded-full bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400">
+        <button type="submit" class="bg-teal-500 hover:bg-teal-400 text-indigo-950 font-semibold px-8 py-3.5 rounded-full transition whitespace-nowrap">
+          Join Waitlist
+        </button>
+      </form>
+      <p class="mt-4 text-xs text-gray-500">No spam. Just future updates and early invites.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-indigo-950 border-t border-white/5 py-12 px-5 sm:px-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-br from-teal-400 via-violet-500 to-coral-400 flex items-center justify-center text-indigo-950 font-bold text-xs">UX</div>
+          <span class="font-display font-semibold">Urbanista X</span>
+        </div>
+        <div class="flex gap-6 text-sm text-gray-400">
+          <a href="#meet" class="hover:text-teal-400 transition">Meet Her</a>
+          <a href="#how" class="hover:text-teal-400 transition">How It Works</a>
+          <a href="#hunts" class="hover:text-teal-400 transition">Hunts</a>
+          <a href="#funding" class="hover:text-teal-400 transition">Funding</a>
+        </div>
+        <div class="flex gap-4 text-sm text-gray-400">
+          <a href="#" class="hover:text-white transition">Instagram</a>
+          <a href="#" class="hover:text-white transition">TikTok</a>
+          <a href="#" class="hover:text-white transition">YouTube</a>
+          <a href="#" class="hover:text-white transition">X</a>
+          <a href="#" class="hover:text-white transition">Facebook</a>
+        </div>
+      </div>
+      <div class="text-center text-sm text-gray-500">
+        <p>© 2026 Smart City Design · Urbanista X · The future starts today.</p>
+        <p class="mt-1">Built with care in Ulaanbaatar and beyond.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
