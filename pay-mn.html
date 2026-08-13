@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Төлбөр — Мэдлэгийн төв | Smart City Design</title>
+  <meta name="description" content="Мэдлэгийн төвийн төлөвлөгөөгөө сонгоод төлбөрөө аюулгүй хийгээрэй.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            indigo: { 950: '#0B0F1A', 900: '#111827', 800: '#1E1B4B' },
+            teal: { 400: '#2DD4BF', 500: '#14B8A6', 600: '#0D9488', 700: '#0F766E' },
+            coral: { 400: '#FB7185', 500: '#F43F5E' },
+            violet: { 400: '#A78BFA', 500: '#8B5CF6', 600: '#7C3AED' },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #2DD4BF 0%, #A78BFA 50%, #FB7185 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-bg {
+      background: radial-gradient(ellipse at 30% 20%, rgba(45, 212, 191, 0.12) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 60%, rgba(139, 92, 246, 0.10) 0%, transparent 50%),
+                  #0B0F1A;
+    }
+    .card-glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="bg-indigo-950 text-white antialiased">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full z-50 bg-indigo-950/80 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+      <a href="indexmn.html" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-teal-400 via-violet-500 to-coral-400 flex items-center justify-center text-indigo-950 font-bold text-xs">SC</div>
+        <span class="font-display font-semibold tracking-tight group-hover:text-teal-400 transition">Smart City Design</span>
+      </a>
+      <div class="flex items-center gap-3">
+        <a href="pay.html" class="text-xs text-gray-400 hover:text-white transition">🌐 EN | МН</a>
+        <a href="knowledge-hub-mn.html" class="text-sm text-gray-400 hover:text-teal-400 transition">← Хичээл рүү буцах</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero-bg pt-28 pb-12 relative overflow-hidden">
+    <div class="max-w-3xl mx-auto px-5 sm:px-8 text-center relative z-10">
+      <p class="text-teal-400 font-medium text-sm tracking-widest uppercase mb-3">Аюулгүй төлбөр</p>
+      <h1 class="font-display text-3xl sm:text-4xl font-bold tracking-tight mb-4">Төлөвлөгөөгөө сонгоно уу</h1>
+      <p class="text-gray-400">Төлбөр баталгаажсаны дараа хандалт шууд нээгдэнэ.</p>
+    </div>
+  </header>
+
+  <!-- PLANS -->
+  <section class="pb-20">
+    <div class="max-w-5xl mx-auto px-5 sm:px-8">
+      <div class="grid md:grid-cols-3 gap-6 mb-16">
+
+        <!-- Monthly -->
+        <div class="card-glass rounded-3xl p-8 flex flex-col">
+          <p class="text-sm text-gray-400 mb-1">Сар бүр</p>
+          <div class="flex items-baseline gap-1 mb-4">
+            <span class="font-display text-4xl font-bold">$29</span>
+            <span class="text-gray-500">/ сар</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-6">Бүрэн хандалт + сар бүрийн шууд Q&A. Хэзээ ч цуцлах боломжтой.</p>
+          <ul class="space-y-2.5 text-sm text-gray-300 mb-8 flex-1">
+            <li class="flex gap-2"><span class="text-teal-400">✓</span> Бүх премиум хичээлүүд</li>
+            <li class="flex gap-2"><span class="text-teal-400">✓</span> Загвар & хэрэгслүүд</li>
+            <li class="flex gap-2"><span class="text-teal-400">✓</span> Discord нийгэмлэг</li>
+            <li class="flex gap-2"><span class="text-teal-400">✓</span> Сар бүрийн шууд хичээл</li>
+          </ul>
+          <a href="mailto:hello@smart-city.design?subject=Төлбөр%20-%20Сарын%20төлөвлөгөө%20%2429&body=Сайн%20байна%20уу%20Намуун%2C%0A%0AБи%20Сарын%20төлөвлөгөөг%20(%2429%2Fsар)%20захиалахыг%20хүсэж%20байна.%0A%0AТөлбөрийн%20заавар%20илгээнэ%20үү.%0A%0AБаярлалаа." 
+             class="block text-center bg-white/10 hover:bg-white/15 font-semibold py-3.5 rounded-full transition">
+            Сар бүр сонгох
+          </a>
+        </div>
+
+        <!-- Yearly -->
+        <div class="rounded-3xl p-8 flex flex-col relative border-2 border-teal-500/50 bg-teal-500/5">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-teal-500 text-indigo-950 text-xs font-bold">ХАМГИЙН АШИГТАЙ</span>
+          <p class="text-sm text-teal-400 mb-1">Жил бүр</p>
+          <div class="flex items-baseline gap-1 mb-1">
+            <span class="font-display text-4xl font-bold">$249</span>
+            <span class="text-gray-500">/ жил</span>
+          </div>
+          <p class="text-teal-400/80 text-xs mb-4">Сарынхаас ~$100 хэмнэнэ</p>
+          <p class="text-gray-400 text-sm mb-6">Сарын бүх давуу тал + эрт хандалт, санал хүсэлт.</p>
+          <ul class="space-y-2.5 text-sm text-gray-300 mb-8 flex-1">
+            <li class="flex gap-2"><span class="text-teal-400">✓</span> Сарын бүх давуу тал</li>
+            <li class="flex gap-2"><span class="text-teal-400">✓</span> Шинэ хичээлд эрт хандалт</li>
+            <li class="flex gap-2"><span class="text-teal-400">✓</span> 2× төслийн санал хүсэлт</li>
+            <li class="flex gap-2"><span class="text-teal-400">✓</span> Төгссөний гэрчилгээ</li>
+          </ul>
+          <a href="mailto:hello@smart-city.design?subject=Төлбөр%20-%20Жилийн%20төлөвлөгөө%20%24249&body=Сайн%20байна%20уу%20Намуун%2C%0A%0AБи%20Жилийн%20төлөвлөгөөг%20(%24249%2Fжил)%20захиалахыг%20хүсэж%20байна.%0A%0AТөлбөрийн%20заавар%20илгээнэ%20үү.%0A%0AБаярлалаа." 
+             class="block text-center bg-teal-500 hover:bg-teal-400 text-indigo-950 font-semibold py-3.5 rounded-full transition">
+            Жил бүр сонгох
+          </a>
+        </div>
+
+        <!-- Single -->
+        <div class="card-glass rounded-3xl p-8 flex flex-col">
+          <p class="text-sm text-gray-400 mb-1">Нэг хичээл</p>
+          <div class="flex items-baseline gap-1 mb-4">
+            <span class="font-display text-4xl font-bold">$79</span>
+            <span class="text-gray-500">– $149</span>
+          </div>
+          <p class="text-gray-400 text-sm mb-6">Нэг премиум хичээлийг үүрд ашиглах. Захиалга шаардлагагүй.</p>
+          <ul class="space-y-2.5 text-sm text-gray-300 mb-8 flex-1">
+            <li class="flex gap-2"><span class="text-teal-400">✓</span> Насан туршийн хандалт</li>
+            <li class="flex gap-2"><span class="text-teal-400">✓</span> Бүх материал</li>
+            <li class="flex gap-2"><span class="text-teal-400">✓</span> Гэрчилгээ</li>
+            <li class="flex gap-2 text-gray-500"><span>○</span> Шууд хичээл байхгүй</li>
+          </ul>
+          <a href="mailto:hello@smart-city.design?subject=Төлбөр%20-%20Нэг%20хичээл&body=Сайн%20байна%20уу%20Намуун%2C%0A%0AБи%20нэг%20хичээл%20авахыг%20хүсэж%20байна.%0A%0AАль%20хичээлүүд%20байгааг%20хэлж%2C%20төлбөрийн%20заавар%20илгээнэ%20үү.%0A%0AБаярлалаа." 
+             class="block text-center bg-white/10 hover:bg-white/15 font-semibold py-3.5 rounded-full transition">
+            Хичээл сонгох
+          </a>
+        </div>
+      </div>
+
+      <!-- Payment methods note -->
+      <div class="card-glass rounded-2xl p-8 max-w-3xl mx-auto text-center">
+        <h2 class="font-display text-xl font-semibold mb-3">Одоогоор боломжтой төлбөрийн аргууд</h2>
+        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+          Одоогоор төлбөрийг гараар боловсруулж байна. Төлөвлөгөө сонгосны дараа танд имэйлээр тодорхой заавар (банкны шилжүүлэг, олон улсын карт эсвэл QPay) ирнэ.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-300">
+          <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10">Олон улсын карт</span>
+          <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10">Банкны шилжүүлэг (SWIFT / Wise)</span>
+          <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10">QPay (Монгол)</span>
+        </div>
+        <p class="text-xs text-gray-500 mt-6">
+          Автомат төлбөр (Stripe / Lemon Squeezy / QPay) удахгүй холбогдоно. Одоогоор имэйл хамгийн хурдан, найдвартай арга юм.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 py-10 px-5 sm:px-8">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded-full bg-gradient-to-br from-teal-400 via-violet-500 to-coral-400 flex items-center justify-center text-[10px] font-bold text-indigo-950">SC</div>
+        <span>© 2026 Smart City Design</span>
+      </div>
+      <p>Ирээдүй өнөөдрөөс эхэлнэ.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
