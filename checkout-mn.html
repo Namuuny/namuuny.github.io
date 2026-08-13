@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Төлбөр — Мэдлэгийн төв | Smart City Design</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            indigo: { 950: '#0B0F1A', 900: '#111827', 800: '#1E1B4B' },
+            teal: { 400: '#2DD4BF', 500: '#14B8A6', 600: '#0D9488' },
+            coral: { 400: '#FB7185', 500: '#F43F5E' },
+            violet: { 400: '#A78BFA', 500: '#8B5CF6' },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; }
+    .card-glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .payment-option.selected {
+      border-color: #14B8A6;
+      background: rgba(20, 184, 166, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-indigo-950 text-white antialiased min-h-screen">
+
+  <!-- NAV -->
+  <nav class="border-b border-white/5">
+    <div class="max-w-5xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+      <a href="indexmn.html" class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-teal-400 via-violet-500 to-coral-400 flex items-center justify-center text-indigo-950 font-bold text-xs">SC</div>
+        <span class="font-display font-semibold tracking-tight">Smart City Design</span>
+      </a>
+      <a href="knowledge-hub-mn.html" class="text-sm text-gray-400 hover:text-teal-400 transition">← Хичээл рүү буцах</a>
+    </div>
+  </nav>
+
+  <main class="max-w-5xl mx-auto px-5 sm:px-8 py-12">
+    <div class="grid lg:grid-cols-5 gap-10">
+
+      <!-- Left: Order Summary -->
+      <div class="lg:col-span-2">
+        <h1 class="font-display text-2xl font-bold mb-6">Захиалгын хураангуй</h1>
+        
+        <div class="card-glass rounded-2xl p-6 mb-6">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <p class="font-display font-semibold" id="plan-name">Жилийн захиалга</p>
+              <p class="text-sm text-gray-400 mt-1">Бүх премиум хичээл + шууд хичээлд бүрэн хандалт</p>
+            </div>
+            <p class="font-display font-bold text-teal-400" id="plan-price">$249</p>
+          </div>
+          <div class="border-t border-white/10 pt-4 space-y-2 text-sm">
+            <div class="flex justify-between text-gray-400">
+              <span>Дэд нийлбэр</span>
+              <span id="subtotal">$249.00</span>
+            </div>
+            <div class="flex justify-between text-gray-400">
+              <span>Татвар</span>
+              <span>Баталгаажуулахад тооцогдоно</span>
+            </div>
+            <div class="flex justify-between font-semibold text-white pt-2 border-t border-white/10">
+              <span>Нийт</span>
+              <span id="total">$249.00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-sm text-gray-500 space-y-2">
+          <p>✓ Төлбөр баталгаажсаны дараа шууд хандалт</p>
+          <p>✓ Аюулгүй боловсруулалт</p>
+          <p>✓ Анхны худалдан авагчид 7 хоногийн буцаалт</p>
+        </div>
+      </div>
+
+      <!-- Right: Payment Form -->
+      <div class="lg:col-span-3">
+        <h2 class="font-display text-2xl font-bold mb-6">Төлбөрийн мэдээлэл</h2>
+
+        <form id="payment-form" class="space-y-6" onsubmit="handleSubmit(event)">
+
+          <!-- Contact -->
+          <div class="card-glass rounded-2xl p-6 space-y-4">
+            <h3 class="font-display font-semibold text-lg">Холбоо барих</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm text-gray-400 mb-1.5">Бүтэн нэр *</label>
+                <input type="text" name="name" required placeholder="Таны бүтэн нэр"
+                  class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-teal-500 transition">
+              </div>
+              <div>
+                <label class="block text-sm text-gray-400 mb-1.5">И-мэйл *</label>
+                <input type="email" name="email" required placeholder="you@example.com"
+                  class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-teal-500 transition">
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment Method Selection -->
+          <div class="card-glass rounded-2xl p-6 space-y-4">
+            <h3 class="font-display font-semibold text-lg">Төлбөрийн арга</h3>
+            
+            <div class="space-y-3" id="payment-methods">
+              <!-- Card -->
+              <label class="payment-option flex items-center gap-4 p-4 rounded-xl border border-white/10 cursor-pointer hover:bg-white/5 transition selected" data-method="card">
+                <input type="radio" name="payment_method" value="card" checked class="sr-only">
+                <div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-lg">💳</div>
+                <div class="flex-1">
+                  <p class="font-medium">Кредит / Дебит карт</p>
+                  <p class="text-xs text-gray-500">Visa, Mastercard, Amex</p>
+                </div>
+              </label>
+
+              <!-- Bank Transfer -->
+              <label class="payment-option flex items-center gap-4 p-4 rounded-xl border border-white/10 cursor-pointer hover:bg-white/5 transition" data-method="bank">
+                <input type="radio" name="payment_method" value="bank" class="sr-only">
+                <div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-lg">🏦</div>
+                <div class="flex-1">
+                  <p class="font-medium">Банкны шилжүүлэг / Wise</p>
+                  <p class="text-xs text-gray-500">Олон улсын SWIFT эсвэл Wise</p>
+                </div>
+              </label>
+
+              <!-- QPay -->
+              <label class="payment-option flex items-center gap-4 p-4 rounded-xl border border-white/10 cursor-pointer hover:bg-white/5 transition" data-method="qpay">
+                <input type="radio" name="payment_method" value="qpay" class="sr-only">
+                <div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-lg">📱</div>
+                <div class="flex-1">
+                  <p class="font-medium">QPay (Монгол)</p>
+                  <p class="text-xs text-gray-500">Аль ч Монгол банкны апп-аар QR уншуулна</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Dynamic payment fields -->
+          <div id="card-fields" class="card-glass rounded-2xl p-6 space-y-4">
+            <h3 class="font-display font-semibold text-lg">Картын мэдээлэл</h3>
+            <div>
+              <label class="block text-sm text-gray-400 mb-1.5">Картын дугаар</label>
+              <input type="text" name="card_number" placeholder="ACCT-000035" maxlength="19"
+                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-teal-500 transition">
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm text-gray-400 mb-1.5">Дуусах хугацаа</label>
+                <input type="text" name="expiry" placeholder="MM / YY" maxlength="7"
+                  class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-teal-500 transition">
+              </div>
+              <div>
+                <label class="block text-sm text-gray-400 mb-1.5">CVC</label>
+                <input type="text" name="cvc" placeholder="123" maxlength="4"
+                  class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-teal-500 transition">
+              </div>
+            </div>
+            <p class="text-xs text-gray-500">Энэ бол demo форм. Жинхэнэ картын төлбөрийг дараа Stripe / Lemon Squeezy-ээр холбоно.</p>
+          </div>
+
+          <div id="bank-fields" class="card-glass rounded-2xl p-6 space-y-4 hidden">
+            <h3 class="font-display font-semibold text-lg">Банкны шилжүүлгийн заавар</h3>
+            <p class="text-sm text-gray-400">Форм илгээсний дараа банкны дэлгэрэнгүй мэдээлэл (Wise / SWIFT) хэдхэн минутын дотор и-мэйлээр ирнэ.</p>
+            <div>
+              <label class="block text-sm text-gray-400 mb-1.5">Таны тэмдэглэл (заавал биш)</label>
+              <input type="text" name="bank_note" placeholder="e.g. Yearly plan – John Doe"
+                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-teal-500 transition">
+            </div>
+          </div>
+
+          <div id="qpay-fields" class="card-glass rounded-2xl p-6 space-y-4 hidden">
+            <h3 class="font-display font-semibold text-lg">QPay</h3>
+            <p class="text-sm text-gray-400">Илгээсний дараа QPay QR код үүсэж и-мэйл рүү очно. Монгол банкны аль ч апп-аар төлж болно.</p>
+            <div>
+              <label class="block text-sm text-gray-400 mb-1.5">Утасны дугаар (QPay мэдэгдэлд)</label>
+              <input type="tel" name="phone" placeholder="+976 99xxxxxx"
+                class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-teal-500 transition">
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="w-full bg-teal-500 hover:bg-teal-400 text-indigo-950 font-semibold py-4 rounded-full transition text-lg">
+            Төлбөр хийх
+          </button>
+
+          <p class="text-xs text-center text-gray-500">
+            Худалдан авалт хийснээр та хичээлийн хандалтын нөхцөлийг зөвшөөрч байна.  
+            Одоогоор front-end demo — жинхэнэ төлбөрийн систем удахгүй холбогдоно.
+          </p>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Төлбөрийн арга switching
+    document.querySelectorAll('.payment-option').forEach(option => {
+      option.addEventListener('click', () => {
+        document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+        option.classList.add('selected');
+        option.querySelector('input').checked = true;
+
+        const method = option.dataset.method;
+        document.getElementById('card-fields').classList.toggle('hidden', method !== 'card');
+        document.getElementById('bank-fields').classList.toggle('hidden', method !== 'bank');
+        document.getElementById('qpay-fields').classList.toggle('hidden', method !== 'qpay');
+      });
+    });
+
+    // Simple plan switching via URL params
+    const params = new URLSearchParams(window.location.search);
+    const plan = params.get('plan') || 'yearly';
+    
+    const plans = {
+      monthly: { name: 'Сарын захиалга', price: '$29', total: '$29.00' },
+      yearly:  { name: 'Жилийн захиалга', price: '$249', total: '$249.00' },
+      single:  { name: 'Нэг хичээл', price: '$79–$149', total: 'From $79.00' }
+    };
+
+    if (plans[plan]) {
+      document.getElementById('plan-name').textContent = plans[plan].name;
+      document.getElementById('plan-price').textContent = plans[plan].price;
+      document.getElementById('subtotal').textContent = plans[plan].total;
+      document.getElementById('total').textContent = plans[plan].total;
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      const method = data.get('payment_method');
+      
+      // Demo behaviour
+      alert(`Thank you!\n\nPlan: ${document.getElementById('plan-name').textContent}\nТөлбөрийн арга: ${method}\n\nThis is a front-end demo. In the real version this will create an order and send payment instructions or process the card.`);
+      
+      // In production you would send this to your backend / payment provider
+      // window.location.href = 'profile.html?welcome=1';
+    }
+  </script>
+</body>
+</html>
