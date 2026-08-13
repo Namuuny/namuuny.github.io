@@ -59,15 +59,19 @@
       
       <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
         <a href="#projects" class="hover:text-teal-400 transition">Projects</a>
+        <a href="knowledge-hub.html" class="hover:text-teal-400 transition">Knowledge Hub</a>
         <a href="#about" class="hover:text-teal-400 transition">About</a>
         <a href="#contact" class="hover:text-teal-400 transition">Contact</a>
       </div>
 
       <div class="flex items-center gap-3">
-        <a href="indexmn.html" class="text-xs text-gray-400 hover:text-white transition">🌐 EN | МН</a>
-        <a href="schedule.html" class="hidden sm:inline-flex bg-teal-500 hover:bg-teal-400 text-indigo-950 font-semibold text-sm px-5 py-2.5 rounded-full transition">
-          Book Consultation
-        </a>
+        <a href="indexmn.html" class="text-xs text-gray-400 hover:text-white transition hidden sm:inline">🌐 EN | МН</a>
+        <!-- Auth: Log in / Sign up OR user avatar dropdown (Udemy-style) -->
+        <div id="nav-auth" class="flex items-center gap-3">
+          <!-- Filled by js/navbar-auth.js -->
+          <a href="login.html" class="text-sm text-gray-300 hover:text-white transition hidden sm:inline">Log in</a>
+          <a href="signup.html" class="text-sm font-semibold text-indigo-950 bg-white hover:bg-gray-100 px-4 py-2 rounded-full transition hidden sm:inline-flex">Sign up</a>
+        </div>
       </div>
     </div>
   </nav>
@@ -78,7 +82,7 @@
     <div class="absolute bottom-1/4 right-10 w-80 h-80 bg-violet-500/10 rounded-full blur-3xl"></div>
     
     <div class="max-w-5xl mx-auto px-5 sm:px-8 py-20 text-center relative z-10">
-      <p class="text-teal-400 font-medium text-sm tracking-widest uppercase mb-6">Urban Planning · Design · Systems</p>
+      <p class="text-teal-400 font-medium text-sm tracking-widest uppercase mb-6">Urban Planning · Design · Future Systems</p>
       <h1 class="font-display text-5xl sm:text-6xl md:text-7xl font-bold leading-[0.95] tracking-tighter mb-6">
         The future<br><span class="gradient-text">starts today</span>
       </h1>
@@ -89,8 +93,8 @@
         <a href="#projects" class="bg-teal-500 hover:bg-teal-400 text-indigo-950 font-semibold px-8 py-3.5 rounded-full transition">
           View Projects
         </a>
-        <a href="#contact" class="card-glass hover:bg-white/10 text-white font-medium px-8 py-3.5 rounded-full transition">
-          Book Consultation
+        <a href="knowledge-hub.html" class="card-glass hover:bg-white/10 text-white font-medium px-8 py-3.5 rounded-full transition">
+          Knowledge Hub
         </a>
       </div>
     </div>
@@ -106,10 +110,9 @@
 
       <!-- Featured Project: Urbanista X -->
       <a href="projects/urbanista-x.html" class="group block card-glass rounded-3xl overflow-hidden hover:bg-white/5 transition mb-8">
-  
         <div class="grid lg:grid-cols-2 gap-0">
-    <div class="aspect-[4/3] lg:aspect-auto bg-gradient-to-br from-teal-500/20 via-violet-600/30 to-coral-500/20 relative flex items-center justify-center p-12">
-             <div class="text-center">
+          <div class="aspect-[4/3] lg:aspect-auto bg-gradient-to-br from-teal-500/20 via-violet-600/30 to-coral-500/20 relative flex items-center justify-center p-12">
+            <div class="text-center">
               <div class="w-24 h-24 rounded-full bg-gradient-to-br from-teal-400 via-violet-500 to-coral-400 mx-auto mb-6 flex items-center justify-center text-3xl font-bold text-indigo-950 shadow-2xl shadow-violet-500/30">
                 UX
               </div>
@@ -133,10 +136,8 @@
               View project
               <svg class="w-4 h-4 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </div>
-           
           </div>
         </div>
-       
       </a>
 
       <!-- Placeholder for future projects -->
@@ -148,6 +149,42 @@
         <div class="card-glass rounded-2xl p-8 border border-dashed border-white/10 text-center">
           <p class="text-gray-500 text-sm mb-2">Open for collaboration</p>
           <h4 class="font-display font-semibold text-lg text-gray-400">Have a project in mind?</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KNOWLEDGE HUB TEASER -->
+  <section class="py-20 sm:py-28 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-teal-400 font-medium text-sm tracking-widest uppercase mb-3">Learn with us</p>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight mb-6">Knowledge Hub</h2>
+          <p class="text-gray-300 leading-relaxed mb-6">
+            Free video courses and a paid subscription library covering people-centred smart cities, AR urban experiences, service design for regenerative systems, and practical tools for designers working in complex urban contexts.
+          </p>
+          <a href="knowledge-hub.html" class="inline-flex items-center gap-2 bg-teal-500 hover:bg-teal-400 text-indigo-950 font-semibold px-7 py-3 rounded-full transition">
+            Explore courses
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="card-glass rounded-2xl p-5">
+            <p class="text-teal-400 text-xs font-medium mb-1">Free</p>
+            <p class="font-display font-semibold">3 open courses</p>
+            <p class="text-gray-500 text-xs mt-1">No signup needed</p>
+          </div>
+          <div class="card-glass rounded-2xl p-5">
+            <p class="text-violet-400 text-xs font-medium mb-1">Premium</p>
+            <p class="font-display font-semibold">4 deep courses</p>
+            <p class="text-gray-500 text-xs mt-1">Subscription or buy once</p>
+          </div>
+          <div class="card-glass rounded-2xl p-5 col-span-2">
+            <p class="text-coral-400 text-xs font-medium mb-1">Community</p>
+            <p class="font-display font-semibold">Live sessions & Discord</p>
+            <p class="text-gray-500 text-xs mt-1">Included with subscription</p>
+          </div>
         </div>
       </div>
     </div>
@@ -185,18 +222,46 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT / GET IN TOUCH -->
   <section id="contact" class="py-24 sm:py-32 border-t border-white/5">
-    <div class="max-w-3xl mx-auto px-5 sm:px-8 text-center">
-      <p class="text-teal-400 font-medium text-sm tracking-widest uppercase mb-4">Get in Touch</p>
-      <h2 class="font-display text-4xl font-bold tracking-tight mb-6">Let’s shape the next project together.</h2>
-      <p class="text-gray-400 text-lg mb-10">
-        Whether you’re a city, institution, investor, or fellow designer — we’d love to hear from you.
-      </p>
-      <a href="schedule.html" class="inline-flex bg-teal-500 hover:bg-teal-400 text-indigo-950 font-semibold px-8 py-4 rounded-full transition text-lg">
-        info@smart-city.design
-      </a>
-      <p class="mt-8 text-sm text-gray-500">Or book a consultation to discuss collaboration, funding, or ministry partnerships.</p>
+    <div class="max-w-5xl mx-auto px-5 sm:px-8">
+      <div class="text-center mb-14">
+        <p class="text-teal-400 font-medium text-sm tracking-widest uppercase mb-4">Get in Touch</p>
+        <h2 class="font-display text-4xl font-bold tracking-tight mb-4">Let’s shape the next project together.</h2>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+          Whether you’re a city, institution, investor, or fellow designer — we’d love to hear from you.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <!-- Founder -->
+        <div class="card-glass rounded-3xl p-8 sm:p-10 text-center md:text-left flex flex-col md:flex-row items-center gap-6">
+          <img src="images/founder.jpg" alt="Namuun Baatarjav — Founder of Smart City Design" class="w-32 h-32 rounded-full object-cover border-2 border-teal-500/30 shadow-lg shadow-teal-500/10 flex-shrink-0">
+          <div>
+            <p class="text-teal-400 text-xs font-medium tracking-wider uppercase mb-1">Founder</p>
+            <h3 class="font-display text-xl font-bold mb-1">Namuun Baatarjav</h3>
+            <p class="text-gray-400 text-sm mb-3">Smart City Experience Designer</p>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Urban strategist, AR experience creator, and educator based in Ulaanbaatar. Working at the meeting point of human-centred design, local knowledge, and future systems.
+            </p>
+          </div>
+        </div>
+
+        <!-- Contact actions -->
+        <div class="space-y-5">
+          <a href="mailto:hello@smart-city.design" class="block card-glass hover:bg-white/5 rounded-2xl p-6 transition group">
+            <p class="text-sm text-gray-400 mb-1">Email</p>
+            <p class="font-display font-semibold text-lg group-hover:text-teal-400 transition">hello@smart-city.design</p>
+          </a>
+          <div class="card-glass rounded-2xl p-6">
+            <p class="text-sm text-gray-400 mb-1">Consultations</p>
+            <p class="text-gray-300 text-sm leading-relaxed mb-4">Book a 45-minute conversation about collaboration, funding, ministry partnerships, or project support.</p>
+            <a href="mailto:hello@smart-city.design?subject=Consultation%20Request" class="inline-flex bg-teal-500 hover:bg-teal-400 text-indigo-950 font-semibold text-sm px-5 py-2.5 rounded-full transition">
+              Request a call
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -211,5 +276,10 @@
     </div>
   </footer>
 
+  <!-- Firebase Auth + Udemy-style navbar dropdown -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/navbar-auth.js"></script>
 </body>
 </html>
