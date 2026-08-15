@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="mn">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Urbanista X — Smart City Design</title>
-  <meta name="description" content="Urbanista X нь Улаанбаатар хотын ганцаар аялагчдад зориулсан мэдрэмжтэй AI + AR хотын хөтөч. Түүхэн түүх, бодит цагийн навигаци, тоглоомын ирээдүйн алсын хараа.">
+  <title>Smart City Design — The future starts today</title>
+  <meta name="description" content="Smart City Design is an urban planning and design studio creating future-oriented projects. Current focus: Urbanista X — an empathetic AR guide for solo travelers in Ulaanbaatar.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>
@@ -46,29 +46,69 @@
     }
     html { scroll-behavior: smooth; }
   </style>
+
+  <style>
+    /* Mobile menu visibility fallback */
+    @media (min-width: 768px) {
+      #mobile-menu-btn { display: none !important; }
+      #mobile-menu { display: none !important; }
+    }
+    @media (max-width: 767px) {
+      #mobile-menu-btn { display: inline-flex !important; }
+    }
+  </style>
 </head>
 <body class="bg-indigo-950 text-white antialiased">
 
   <!-- NAV -->
   <nav class="fixed top-0 w-full z-50 bg-indigo-950/80 backdrop-blur-xl border-b border-white/5">
     <div class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
-      <a href="../indexmn.html" class="flex items-center gap-2.5 group">
+      <a href="index.html" class="flex items-center gap-2.5 group">
         <div class="w-8 h-8 rounded-full bg-gradient-to-br from-teal-400 via-violet-500 to-coral-400 flex items-center justify-center text-indigo-950 font-bold text-xs">SC</div>
         <span class="font-display font-semibold tracking-tight group-hover:text-teal-400 transition">Smart City Design</span>
       </a>
       
       <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-        <a href="../indexmn.html#projects" class="hover:text-teal-400 transition">Төслүүд</a>
-        <a href="../knowledge-hub-mn.html" class="hover:text-teal-400 transition">Мэдлэгийн төв</a>
-        <a href="../indexmn.html#about" class="hover:text-teal-400 transition">Бидний тухай</a>
-        <a href="../indexmn.html#contact" class="hover:text-teal-400 transition">Холбоо барих</a>
+        <a href="indexmn.html/#projects" class="hover:text-teal-400 transition">Projects</a>
+        <a href="knowledge-hub.html" class="hover:text-teal-400 transition">Knowledge Hub</a>
+        <a href="indexmn.html/#about" class="hover:text-teal-400 transition">About</a>
+        <a href="indexmn.html/#contact" class="hover:text-teal-400 transition">Contact</a>
       </div>
 
-      <div class="flex items-center gap-3">
-        <a href="urbanista-x.html" class="text-xs text-gray-400 hover:text-white transition">🌐 EN | МН</a>
-        <a href="../indexmn.html#contact" class="hidden sm:inline-flex bg-teal-500 hover:bg-teal-400 text-indigo-950 font-semibold text-sm px-5 py-2.5 rounded-full transition">
-          Зөвлөгөө захиалах
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Language always visible (mobile + desktop) -->
+        <a href="urbanista-x.html" class="text-xs sm:text-sm text-teal-400 border border-teal-500/50 px-2.5 py-1.5 rounded-full hover:bg-teal-500/10 transition whitespace-nowrap">
+          🌐 МН
         </a>
+        <div id="nav-auth" class="flex items-center gap-3">
+          <a href="login.html" class="text-sm text-gray-300 hover:text-white transition hidden sm:inline">Log in</a>
+          <a href="signup.html" class="text-sm font-semibold text-indigo-950 bg-white hover:bg-gray-100 px-4 py-2 rounded-full transition hidden sm:inline-flex">Sign up</a>
+        </div>
+        <!-- Mobile hamburger -->
+        <button id="mobile-menu-btn" type="button" class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg border border-white/40 text-white bg-white/10 hover:bg-white/20" aria-label="Open menu" aria-expanded="false" style="min-width:44px;min-height:44px;">
+          <svg id="icon-open" width="24" height="24" class="text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="icon-close" width="24" height="24" class="text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="display:none;"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile dropdown menu -->
+    <div id="mobile-menu" style="display:none;" class="border-t border-white/10 bg-indigo-950">
+      <div class="px-5 py-4 space-y-1">
+        <a href="indexmn.html/#projects" class="block py-3 px-3 rounded-lg text-gray-200 hover:bg-white/5 hover:text-teal-400 transition">Projects</a>
+        <a href="knowledge-hub.html" class="block py-3 px-3 rounded-lg text-gray-200 hover:bg-white/5 hover:text-teal-400 transition">Knowledge Hub</a>
+        <a href="indexmn.html/#about" class="block py-3 px-3 rounded-lg text-gray-200 hover:bg-white/5 hover:text-teal-400 transition">About</a>
+        <a href="indexmn.html/#contact" class="block py-3 px-3 rounded-lg text-gray-200 hover:bg-white/5 hover:text-teal-400 transition">Contact</a>
+        <div class="border-t border-white/10 my-2 pt-2">
+          <a href="urbanista-x.html" class="flex items-center gap-2 py-3 px-3 rounded-lg text-teal-400 hover:bg-white/5 transition font-medium">
+            <span>🌐</span>
+            <span>Language: EN | <strong>МН</strong></span>
+          </a>
+        </div>
+        <div class="border-t border-white/10 my-2 pt-2 space-y-2">
+          <a href="loginmn.html" class="block py-3 px-3 rounded-lg text-center text-gray-200 border border-white/20 hover:bg-white/5 transition">Log in</a>
+          <a href="signupmn.html" class="block py-3 px-3 rounded-full text-center font-semibold text-indigo-950 bg-teal-500 hover:bg-teal-400 transition">Sign up</a>
+        </div>
       </div>
     </div>
   </nav>
@@ -289,6 +329,37 @@
       <p>Ирээдүй өнөөдрөөс эхэлнэ.</p>
     </div>
   </footer>
+<!-- Firebase Auth + Udemy-style navbar dropdown -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/navbar-auth.js"></script>
+  <script>
+    (function () {
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('icon-open');
+      const iconClose = document.getElementById('icon-close');
+      if (!btn || !menu) return;
 
+      function setOpen(open) {
+        menu.style.display = open ? 'block' : 'none';
+        btn.setAttribute('aria-expanded', String(open));
+        if (iconOpen) iconOpen.style.display = open ? 'none' : 'block';
+        if (iconClose) iconClose.style.display = open ? 'block' : 'none';
+      }
+
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const open = menu.style.display !== 'block';
+        setOpen(open);
+      });
+
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { setOpen(false); });
+      });
+    })();
+  </script>
 </body>
 </html>
