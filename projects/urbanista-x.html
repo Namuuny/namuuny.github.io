@@ -269,7 +269,7 @@
         We are open to partnerships with cultural institutions, tourism boards, technology partners, and funders who care about regenerative urban experiences.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="mailto:hello@smart-city.design?subject=Urbanista%20X%20Collaboration" class="bg-teal-500 hover:bg-teal-400 text-indigo-950 font-semibold px-8 py-3.5 rounded-full transition">
+        <a href="schedule.html" class="bg-teal-500 hover:bg-teal-400 text-indigo-950 font-semibold px-8 py-3.5 rounded-full transition">
           Get in touch
         </a>
         <a href="../knowledge-hub.html" class="card-glass hover:bg-white/10 text-white font-medium px-8 py-3.5 rounded-full transition">
@@ -289,6 +289,37 @@
       <p>The future starts today.</p>
     </div>
   </footer>
+<!-- Firebase Auth + Udemy-style navbar dropdown -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/navbar-auth.js"></script>
+  <script>
+    (function () {
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('icon-open');
+      const iconClose = document.getElementById('icon-close');
+      if (!btn || !menu) return;
 
+      function setOpen(open) {
+        menu.style.display = open ? 'block' : 'none';
+        btn.setAttribute('aria-expanded', String(open));
+        if (iconOpen) iconOpen.style.display = open ? 'none' : 'block';
+        if (iconClose) iconClose.style.display = open ? 'block' : 'none';
+      }
+
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const open = menu.style.display !== 'block';
+        setOpen(open);
+      });
+
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { setOpen(false); });
+      });
+    })();
+  </script>
 </body>
 </html>
