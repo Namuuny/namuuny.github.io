@@ -181,10 +181,37 @@
     </div>
   </footer>
 
-  <!-- Firebase Auth + Udemy-style navbar dropdown -->
+<!-- Firebase Auth + Udemy-style navbar dropdown -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
   <script src="js/firebase-config.js"></script>
   <script src="js/navbar-auth.js"></script>
+  <script>
+    (function () {
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('icon-open');
+      const iconClose = document.getElementById('icon-close');
+      if (!btn || !menu) return;
+
+      function setOpen(open) {
+        menu.style.display = open ? 'block' : 'none';
+        btn.setAttribute('aria-expanded', String(open));
+        if (iconOpen) iconOpen.style.display = open ? 'none' : 'block';
+        if (iconClose) iconClose.style.display = open ? 'block' : 'none';
+      }
+
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const open = menu.style.display !== 'block';
+        setOpen(open);
+      });
+
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { setOpen(false); });
+      });
+    })();
+  </script>
 </body>
 </html>
