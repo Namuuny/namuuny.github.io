@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            indigo: { 950: '#0B0F1A', 900: '#111827', 800: '#1E1B4B' },
+            teal: { 400: '#2DD4BF', 500: '#14B8A6', 600: '#0D9488', 700: '#0F766E' },
+            coral: { 400: '#FB7185', 500: '#F43F5E' },
+            violet: { 400: '#A78BFA', 500: '#8B5CF6', 600: '#7C3AED' },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #2DD4BF 0%, #A78BFA 50%, #FB7185 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card-glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    html { scroll-behavior: smooth; }
+  </style>
+  <style>
+    @media (min-width: 768px) {
+      #mobile-menu-btn { display: none !important; }
+      #mobile-menu { display: none !important; }
+    }
+    @media (max-width: 767px) {
+      #mobile-menu-btn { display: inline-flex !important; }
+    }
+  </style>
+  <title>Зохиогчийн эрх — Smart City Design</title>
+  <meta name="description" content="Smart City Design, Намуун Баатаржав, namuuny.github.io-ийн зохиогчийн эрх, оюуны өмчийн мэдэгдэл.">
+</head>
+<body class="bg-indigo-950 text-white antialiased">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full z-50 bg-indigo-950/80 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+      <a href="indexmn.html" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-teal-400 via-violet-500 to-coral-400 flex items-center justify-center text-indigo-950 font-bold text-xs">SC</div>
+        <span class="font-display font-semibold tracking-tight group-hover:text-teal-400 transition">Smart City Design</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+        <a href="indexmn.html#projects" class="hover:text-teal-400 transition">Төслүүд</a>
+        <a href="knowledge-hub-mn.html" class="hover:text-teal-400 transition">Мэдлэгийн төв</a>
+        <a href="indexmn.html#about" class="hover:text-teal-400 transition">Бидний тухай</a>
+        <a href="indexmn.html#contact" class="hover:text-teal-400 transition">Холбоо барих</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="copyright.html" class="text-xs sm:text-sm text-teal-400 border border-teal-500/50 px-2.5 py-1.5 rounded-full hover:bg-teal-500/10 transition whitespace-nowrap">🌐 EN</a>
+        <div id="nav-auth" class="flex items-center gap-3">
+          <a href="login-mn.html" class="text-sm text-gray-300 hover:text-white transition hidden sm:inline">Нэвтрэх</a>
+          <a href="signup-mn.html" class="text-sm font-semibold text-indigo-950 bg-white hover:bg-gray-100 px-4 py-2 rounded-full transition hidden sm:inline-flex">Бүртгүүлэх</a>
+        </div>
+        <button id="mobile-menu-btn" type="button" class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg border border-white/40 text-white bg-white/10 hover:bg-white/20" aria-label="Menu" aria-expanded="false" style="min-width:44px;min-height:44px;">
+          <svg id="icon-open" width="24" height="24" class="text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="icon-close" width="24" height="24" class="text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="display:none;"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" style="display:none;" class="border-t border-white/10 bg-indigo-950">
+      <div class="px-5 py-4 space-y-1">
+        <a href="indexmn.html#projects" class="block py-3 px-3 rounded-lg text-gray-200 hover:bg-white/5 hover:text-teal-400 transition">Төслүүд</a>
+        <a href="knowledge-hub-mn.html" class="block py-3 px-3 rounded-lg text-gray-200 hover:bg-white/5 hover:text-teal-400 transition">Мэдлэгийн төв</a>
+        <a href="indexmn.html#about" class="block py-3 px-3 rounded-lg text-gray-200 hover:bg-white/5 hover:text-teal-400 transition">Бидний тухай</a>
+        <a href="indexmn.html#contact" class="block py-3 px-3 rounded-lg text-gray-200 hover:bg-white/5 hover:text-teal-400 transition">Холбоо барих</a>
+        <div class="border-t border-white/10 my-2 pt-2">
+          <a href="copyright.html" class="flex items-center gap-2 py-3 px-3 rounded-lg text-gray-200 hover:bg-white/5 hover:text-teal-400 transition">
+            <span>🌐</span>
+            <span>Хэл: EN | <strong class="text-white">МН</strong></span>
+          </a>
+        </div>
+        <div class="border-t border-white/10 my-2 pt-2 space-y-2">
+          <a href="login-mn.html" class="block py-3 px-3 rounded-lg text-center text-gray-200 hover:bg-white/5 transition">Нэвтрэх</a>
+          <a href="signup-mn.html" class="block py-3 px-3 rounded-full text-center font-semibold text-indigo-950 bg-white hover:bg-gray-100 transition">Бүртгүүлэх</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-28 pb-20 px-5 sm:px-8">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-teal-400 font-medium text-sm tracking-widest uppercase mb-3">Хууль эрх зүй</p>
+      <h1 class="font-display text-4xl sm:text-5xl font-bold tracking-tight mb-4">Зохиогчийн эрх</h1>
+      <p class="text-gray-400 mb-10">© 2026 Намуун Баатаржав · Smart City Design. Бүх эрх хуулиар хамгаалагдсан.</p>
+
+      <div class="card-glass rounded-3xl p-8 sm:p-10 space-y-5 mb-10">
+        <p class="text-gray-300 leading-relaxed">Smart City Design нэр, тэмдэг, энэ вэбсайт (namuuny.github.io болон холбогдох хуудсууд), энд харуулсан төслүүдийн тайлбар, дүрс, мөн Knowledge Hub-ийн бүх сургалт, материал (үнэгүй болон төлбөртэй) нь өөрөөр заагаагүй бол Намуун Баатаржав / Smart City Design-д хамаарна.</p>
+        <p class="text-gray-300 leading-relaxed">Та сайт болон үнэгүй сургалтыг хувийн суралцахад ашиглаж болно. Сургалтын видео, төслийн оюуны өмч, брэндийн нэрийг бичгэн зөвшөөрөлгүйгээр хуулах, нийтлэх, худалдах, дахин ашиглахыг хориглоно.</p>
+        <p class="text-gray-300 leading-relaxed">Түнш, захиалагчийн ажил энд зээлийн хамт харагдана; тэдгээрийн эрх нь тусад нь тохиролцоогүй бол нэрлэгдсэн түншүүдэд үлдэнэ.</p>
+        <p class="text-gray-300 leading-relaxed">Холбоо барих: <a href="mailto:info@smart-city.design" class="text-teal-400 hover:text-teal-300 transition">info@smart-city.design</a></p>
+      </div>
+
+      <div class="card-glass rounded-3xl p-8 sm:p-10 space-y-4 border border-white/5">
+        <h2 class="font-display text-xl font-semibold text-gray-200 mb-2">In English</h2>
+        <p class="text-gray-500 text-xs mb-4">© 2026 Namuun Baatarjav · Smart City Design. All rights reserved.</p>
+        <p class="text-gray-400 leading-relaxed text-sm">Smart City Design, the Smart City Design name and mark, this website (including namuuny.github.io and related pages), all project descriptions and visuals shown here, and all Knowledge Hub courses and materials (free and premium) are owned by Namuun Baatarjav / Smart City Design unless a credit says otherwise.</p>
+        <p class="text-gray-400 leading-relaxed text-sm">You may view the site and free courses for personal learning. Do not copy, republish, sell, or reuse course videos, project IP, or the brand name without written permission.</p>
+        <p class="text-gray-400 leading-relaxed text-sm">Partner or client work is credited where shown; those rights stay with the named partners unless agreed otherwise.</p>
+        <p class="text-gray-400 leading-relaxed text-sm">Contact: <a href="mailto:info@smart-city.design" class="text-teal-400 hover:text-teal-300 transition">info@smart-city.design</a></p>
+        <p class="pt-2"><a href="copyright.html" class="text-teal-400 hover:text-teal-300 text-sm transition">English page →</a></p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-white/5 py-10 px-5 sm:px-8">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded-full bg-gradient-to-br from-teal-400 via-violet-500 to-coral-400 flex items-center justify-center text-[10px] font-bold text-indigo-950">SC</div>
+        <div class="flex flex-col gap-0.5 leading-snug">
+          <a href="copyright-mn.html" class="hover:text-teal-400 transition">© 2026 Намуун Баатаржав · Smart City Design. Бүх эрх хуулиар хамгаалагдсан.</a>
+          <a href="copyright.html" class="hover:text-teal-400 transition text-xs">© 2026 Namuun Baatarjav · Smart City Design. All rights reserved.</a>
+        </div>
+      </div>
+      <p>Ирээдүй өнөөдрөөс эхэлнэ.</p>
+    </div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/navbar-auth.js"></script>
+  <script>
+    (function () {
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('icon-open');
+      const iconClose = document.getElementById('icon-close');
+      if (!btn || !menu) return;
+      function setOpen(open) {
+        menu.style.display = open ? 'block' : 'none';
+        btn.setAttribute('aria-expanded', String(open));
+        if (iconOpen) iconOpen.style.display = open ? 'none' : 'block';
+        if (iconClose) iconClose.style.display = open ? 'block' : 'none';
+      }
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        setOpen(menu.style.display !== 'block');
+      });
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { setOpen(false); });
+      });
+    })();
+  </script>
+</body>
+</html>
