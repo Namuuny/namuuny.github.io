@@ -1,1 +1,219 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart City Design — The future starts today</title>
+  <meta name="description" content="Smart City Design is an urban planning and design studio creating future-oriented projects. Current focus: Urbanista X — an empathetic AR guide for solo travelers in Ulaanbaatar.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            indigo: { 950: '#0B0F1A', 900: '#111827', 800: '#1E1B4B' },
+            teal: { 400: '#2DD4BF', 500: '#14B8A6', 600: '#0D9488', 700: '#0F766E' },
+            coral: { 400: '#FB7185', 500: '#F43F5E' },
+            violet: { 400: '#A78BFA', 500: '#8B5CF6', 600: '#7C3AED' },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #2DD4BF 0%, #A78BFA 50%, #FB7185 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-bg {
+      background: radial-gradient(ellipse at 30% 20%, rgba(45, 212, 191, 0.12) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 60%, rgba(139, 92, 246, 0.10) 0%, transparent 50%),
+                  #0B0F1A;
+    }
+    .card-glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    html { scroll-behavior: smooth; }
+  </style>
+
+  <style>
+    /* Mobile menu visibility fallback */
+    @media (min-width: 768px) {
+      #mobile-menu-btn { display: none !important; }
+      #mobile-menu { display: none !important; }
+    }
+    @media (max-width: 767px) {
+      #mobile-menu-btn { display: inline-flex !important; }
+    }
+  </style>
+</head>
+<body class="bg-indigo-950 text-white antialiased">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full z-50 bg-indigo-950/80 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-teal-400 via-violet-500 to-coral-400 flex items-center justify-center text-indigo-950 font-bold text-xs">SC</div>
+        <span class="font-display font-semibold tracking-tight group-hover:text-teal-400 transition">Smart City Design</span>
+      </a>
+      
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+        <a href="index.html#projects" class="hover:text-teal-400 transition">Projects</a>
+        <a href="knowledge-hub.html" class="hover:text-teal-400 transition">Knowledge Hub</a>
+        <a href="index.html#about" class="hover:text-teal-400 transition">About</a>
+        <a href="index.html#contact" class="hover:text-teal-400 transition">Contact</a>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Language always visible (mobile + desktop) -->
+        <a href="schedulemn.html" class="text-xs sm:text-sm text-teal-400 border border-teal-500/50 px-2.5 py-1.5 rounded-full hover:bg-teal-500/10 transition whitespace-nowrap">
+          🌐 МН
+        </a>
+        <div id="nav-auth" class="flex items-center gap-3">
+          <a href="login.html" class="text-sm text-gray-300 hover:text-white transition hidden sm:inline">Log in</a>
+          <a href="signup.html" class="text-sm font-semibold text-indigo-950 bg-white hover:bg-gray-100 px-4 py-2 rounded-full transition hidden sm:inline-flex">Sign up</a>
+        </div>
+        <!-- Mobile hamburger -->
+        <button id="mobile-menu-btn" type="button" class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg border border-white/40 text-white bg-white/10 hover:bg-white/20" aria-label="Open menu" aria-expanded="false" style="min-width:44px;min-height:44px;">
+          <svg id="icon-open" width="24" height="24" class="text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="icon-close" width="24" height="24" class="text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="display:none;"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile dropdown menu -->
+    <div id="mobile-menu" style="display:none;" class="border-t border-white/10 bg-indigo-950">
+      <div class="px-5 py-4 space-y-1">
+        <a href="index.html#projects" class="block py-3 px-3 rounded-lg text-gray-200 hover:bg-white/5 hover:text-teal-400 transition">Projects</a>
+        <a href="knowledge-hub.html" class="block py-3 px-3 rounded-lg text-gray-200 hover:bg-white/5 hover:text-teal-400 transition">Knowledge Hub</a>
+        <a href="index.html#about" class="block py-3 px-3 rounded-lg text-gray-200 hover:bg-white/5 hover:text-teal-400 transition">About</a>
+        <a href="index.html#contact" class="block py-3 px-3 rounded-lg text-gray-200 hover:bg-white/5 hover:text-teal-400 transition">Contact</a>
+        <div class="border-t border-white/10 my-2 pt-2">
+          <a href="schedulemn.html" class="flex items-center gap-2 py-3 px-3 rounded-lg text-teal-400 hover:bg-white/5 transition font-medium">
+            <span>🌐</span>
+            <span>Language: EN | <strong>МН</strong></span>
+          </a>
+        </div>
+        <div class="border-t border-white/10 my-2 pt-2 space-y-2">
+          <a href="login.html" class="block py-3 px-3 rounded-lg text-center text-gray-200 border border-white/20 hover:bg-white/5 transition">Log in</a>
+          <a href="signup.html" class="block py-3 px-3 rounded-full text-center font-semibold text-indigo-950 bg-teal-500 hover:bg-teal-400 transition">Sign up</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+ <div class="pt-24 pb-20 px-6">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-16">
+        <h1 class="text-5xl md:text-6xl font-semibold leading-tight">Let's discuss your project</h1>
+        <p class="mt-6 text-2xl text-gray-600">
+          Schedule a 45-minute consultancy call or send us a message.
+        </p>
+      </div>
+
+      <!-- Scheduling + Contact Form -->
+      <div class="bg-gradient border border-gray-100 rounded-3xl shadow-xl p-10 md:p-12">
+       <form action="https://api.web3forms.com/submit" method="POST" class="space-y-8">
+
+  <!-- Hidden Access Key -->
+  <input type="hidden" name="access_key" value="6825b6e8-3676-418c-b898-0b528526fe0e">
+
+  <!-- Optional: Subject -->
+  <input type="hidden" name="subject" value="New Booking Request - Smart City Design">
+
+  <div>
+    <label class="block text-grey-sm font-medium mb-2">Name</label>
+    <input type="text" name="name" required class="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:border-teal-600 focus:outline-none text-lg">
+  </div>
+
+  <div>
+    <label class="block text-grey-sm font-medium mb-2">E-mail</label>
+    <input type="email" name="email" required class="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:border-teal-600 focus:outline-none text-lg">
+  </div>
+
+  <div>
+    <label class="block text-grey-sm font-medium mb-2">Date</label>
+    <input type="date" name="preferred_date" required class="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:border-teal-600 focus:outline-none text-lg">
+  </div>
+
+  <div>
+    <label class="block text-grey-sm font-medium mb-2">Time (45 min)</label>
+    <input type="time" name="preferred_time" required min="09:00" max="17:00" step="1800"
+           class="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:border-teal-600 focus:outline-none text-lg">
+  </div>
+
+  <div>
+    <label class="block text-grey-sm font-medium mb-2">Tell me about your project</label>
+    <textarea name="message" rows="5" placeholder="I would like to discuss with you about..." 
+              class="w-full px-6 py-4 border border-gray-300 rounded-2xl focus:border-teal-600 focus:outline-none text-lg"></textarea>
+  </div>
+
+  <button type="submit" class="w-full bg-teal-600 hover:bg-teal-700 text-white py-5 rounded-2xl font-semibold text-xl transition">
+    Send message & Schedule meeting
+  </button>
+</form>
+
+        <p class="text-center text-sm text-gray-500 mt-10">
+          We usually reply within 1–2 business days. All calls are held via Zoom or Google Meet.
+        </p>
+      </div>
+    </div>
+  </div>
+      
+<!-- FOOTER -->
+  <footer class="border-t border-white/5 py-10 px-5 sm:px-8">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded-full bg-gradient-to-br from-teal-400 via-violet-500 to-coral-400 flex items-center justify-center text-[10px] font-bold text-indigo-950">SC</div>
+        <div class="flex flex-col gap-0.5 leading-snug">
+          <a href="copyright.html" class="hover:text-teal-400 transition">© 2026 Namuun Baatarjav · Smart City Design. All rights reserved.</a>
+        </div>
+      </div>
+      <p>The future starts today.</p>
+    </div>
+  </footer>
+
+<!-- Firebase Auth + Udemy-style navbar dropdown -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/navbar-auth.js"></script>
+  <script>
+    (function () {
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('icon-open');
+      const iconClose = document.getElementById('icon-close');
+      if (!btn || !menu) return;
+
+      function setOpen(open) {
+        menu.style.display = open ? 'block' : 'none';
+        btn.setAttribute('aria-expanded', String(open));
+        if (iconOpen) iconOpen.style.display = open ? 'none' : 'block';
+        if (iconClose) iconClose.style.display = open ? 'block' : 'none';
+      }
+
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const open = menu.style.display !== 'block';
+        setOpen(open);
+      });
+
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { setOpen(false); });
+      });
+    })();
+  </script>
+</body>
+</html>
