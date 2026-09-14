@@ -1,1 +1,270 @@
-PLACEHOLDER_WILL_FAIL
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — Knowledge Hub | Smart City Design</title>
+<meta name="description" content="Pay Knowledge Hub with official Namuun merchant QPay or TDB bank transfer.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+indigo: { 950: '#0B0F1A', 900: '#111827', 800: '#1E1B4B' },
+teal: { 400: '#2DD4BF', 500: '#14B8A6', 600: '#0D9488' },
+coral: { 400: '#FB7185', 500: '#F43F5E' },
+violet: { 400: '#A78BFA', 500: '#8B5CF6' },
+},
+fontFamily: {
+sans: ['Inter', 'system-ui', 'sans-serif'],
+display: ['Space Grotesk', 'Inter', 'sans-serif'],
+}
+}
+}
+}
+</script>
+<style>
+body { font-family: 'Inter', system-ui, sans-serif; }
+.font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; }
+.card-glass {
+background: rgba(255, 255, 255, 0.03);
+backdrop-filter: blur(12px);
+border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.bank-chip {
+background: rgba(255, 255, 255, 0.04);
+border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.method-tab.active {
+background: rgba(20, 184, 166, 0.15);
+border-color: rgba(20, 184, 166, 0.5);
+color: #2DD4BF;
+}
+</style>
+</head>
+<body class="bg-indigo-950 text-white antialiased min-h-screen">
+<nav class="border-b border-white/5">
+<div class="max-w-5xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+<a href="index.html" class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-gradient-to-br from-teal-400 via-violet-500 to-coral-400 flex items-center justify-center text-indigo-950 font-bold text-xs">SC</div>
+<span class="font-display font-semibold tracking-tight">Smart City Design</span>
+</a>
+<div class="flex items-center gap-3">
+<a href="checkout-mn.html" id="lang-twin" class="text-xs text-teal-400 border border-teal-500/50 px-2.5 py-1.5 rounded-full hover:bg-teal-500/10 transition">🌐 МН</a>
+<a href="pay.html" class="text-sm text-gray-400 hover:text-teal-400 transition">← Plans</a>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-5 sm:px-8 py-10 sm:py-14">
+<div class="grid lg:grid-cols-5 gap-10">
+<aside class="lg:col-span-2">
+<h1 class="font-display text-2xl font-bold mb-6">Order summary</h1>
+<div class="card-glass rounded-2xl p-6 mb-6">
+<div class="flex justify-between items-start mb-4 gap-4">
+<div>
+<p class="font-display font-semibold" id="plan-name">Yearly Subscription</p>
+<p class="text-sm text-gray-400 mt-1" id="plan-desc">Full access to all premium courses + live sessions</p>
+</div>
+<p class="font-display font-bold text-teal-400 text-right whitespace-nowrap" id="plan-price">882,244₮</p>
+</div>
+<div class="border-t border-white/10 pt-4 space-y-2 text-sm">
+<div class="flex justify-between text-gray-400">
+<span>Amount (MNT)</span>
+<span id="subtotal">882,244₮</span>
+</div>
+<div class="flex justify-between text-gray-400">
+<span>USD equivalent</span>
+<span id="usd-equiv">≈ $249</span>
+</div>
+<div class="flex justify-between font-semibold text-white pt-2 border-t border-white/10">
+<span>Total due</span>
+<span id="total" class="text-teal-400">882,244₮</span>
+</div>
+</div>
+</div>
+<div class="text-sm text-gray-500 space-y-2">
+<p>✓ Merchant: <span class="text-gray-300">NAMUUN</span> · Ulaanbaatar · MNT</p>
+<p>✓ Instant access after payment is confirmed</p>
+<p>✓ 7-day refund policy for first-time buyers</p>
+</div>
+<p class="mt-6 text-xs text-gray-600" id="purpose-tag">Purpose: jiliintulbur</p>
+</aside>
+<section class="lg:col-span-3 space-y-6">
+<div class="text-center">
+<p class="text-sm text-gray-400 mb-1">Amount to pay</p>
+<p class="font-display text-4xl sm:text-5xl font-bold text-teal-400 tracking-tight" id="hero-amount">882,244₮</p>
+<p class="text-gray-400 mt-2" id="hero-plan">Yearly plan · Knowledge Hub</p>
+</div>
+<div class="grid grid-cols-2 gap-3" role="tablist" aria-label="Payment method">
+<button type="button" id="tab-qpay" class="method-tab active rounded-2xl border border-white/10 px-4 py-3.5 text-sm font-semibold transition text-left" data-method="qpay">
+<span class="block text-base mb-0.5">📱 QPay</span>
+<span class="block text-xs font-normal text-gray-400">Scan QR with bank app</span>
+</button>
+<button type="button" id="tab-bank" class="method-tab rounded-2xl border border-white/10 px-4 py-3.5 text-sm font-semibold transition text-left text-gray-200" data-method="bank">
+<span class="block text-base mb-0.5">🏦 Bank transfer</span>
+<span class="block text-xs font-normal text-gray-400">Trade Development Bank</span>
+</button>
+</div>
+<div id="panel-qpay" class="space-y-6">
+<div class="mx-auto max-w-sm">
+<div class="bg-white rounded-3xl p-5 sm:p-6 shadow-xl shadow-black/30">
+<img id="qpay-qr" src="images/qpay-yearly.svg" alt="QPay QR for Knowledge Hub yearly plan — scan with your bank app" width="488" height="488" class="w-full h-auto block rounded-xl" />
+</div>
+<p class="text-center text-sm text-gray-300 mt-5 leading-relaxed">
+Scan this QR with your bank app<br>
+<span class="text-gray-500">(QPay, Khan Bank, SocialPay, and others)</span>
+</p>
+</div>
+<div>
+<p class="text-center text-sm text-gray-500 mb-4">Or open a bank app and scan</p>
+<div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2.5" aria-label="Supported bank apps">
+<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">QPay</p></div>
+<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">Khan Bank</p></div>
+<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">SocialPay</p></div>
+<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">State Bank</p></div>
+<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">XacBank</p></div>
+<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">TDB</p></div>
+<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">Most</p></div>
+<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">Golomt</p></div>
+<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">Capitron</p></div>
+<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">Bogd</p></div>
+<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">M bank</p></div>
+<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">Toki</p></div>
+</div>
+</div>
+</div>
+<div id="panel-bank" class="hidden space-y-5">
+<div class="card-glass rounded-2xl p-6 space-y-5">
+<div>
+<p class="text-xs uppercase tracking-wider text-gray-500 mb-1">Bank</p>
+<p class="font-display font-semibold text-lg">Trade Development Bank (TDB)</p>
+<p class="text-sm text-gray-400 mt-0.5">Худалдаа Хөгжлийн Банк</p>
+</div>
+<div>
+<p class="text-xs uppercase tracking-wider text-gray-500 mb-1">Account holder</p>
+<p class="text-gray-200">Namuun Baatarjav / Smart City Design</p>
+<p class="text-xs text-gray-500 mt-1">Merchant name on QPay: NAMUUN</p>
+</div>
+<div>
+<div class="flex items-center justify-between gap-2 mb-1">
+<p class="text-xs uppercase tracking-wider text-gray-500">Account number</p>
+<button type="button" id="copy-account" class="text-xs text-teal-400 hover:text-teal-300 transition">Copy</button>
+</div>
+<p id="account-number" class="font-mono text-base sm:text-lg tracking-wide bg-black/30 border border-white/10 rounded-xl px-4 py-3 break-all select-all">MN470004000427007081</p>
+</div>
+<div>
+<p class="text-xs uppercase tracking-wider text-gray-500 mb-1">Amount</p>
+<p class="font-display text-2xl font-bold text-teal-400" id="bank-amount">882,244₮</p>
+</div>
+<div class="rounded-xl bg-teal-500/10 border border-teal-500/20 p-4 text-sm text-gray-300 space-y-2">
+<p class="font-medium text-teal-300">Transfer description</p>
+<p>Include <span class="text-white font-medium" id="bank-plan-label">Yearly</span> + your full name (e.g. <span class="font-mono text-xs text-gray-400" id="bank-desc-example">Yearly — Your Name</span>).</p>
+</div>
+</div>
+</div>
+<div class="card-glass rounded-2xl p-5 text-sm text-gray-400 space-y-2">
+<p class="font-medium text-gray-200">After you pay</p>
+<p>Email <a href="mailto:hello@smart-city.design" class="text-teal-400 hover:text-teal-300">hello@smart-city.design</a> with your name and transfer screenshot / reference so we can unlock your Knowledge Hub access.</p>
+</div>
+</section>
+</div>
+</main>
+<footer class="border-t border-white/5 py-10 px-5 sm:px-8 mt-8">
+<div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-gradient-to-br from-teal-400 via-violet-500 to-coral-400 flex items-center justify-center text-[10px] font-bold text-indigo-950">SC</div>
+<a href="copyright.html" class="hover:text-teal-400 transition">© 2026 Namuun Baatarjav · Smart City Design. All rights reserved.</a>
+</div>
+<p>The future starts today.</p>
+</div>
+</footer>
+<script>
+(function () {
+var params = new URLSearchParams(window.location.search);
+var plan = (params.get('plan') || 'yearly').toLowerCase();
+var plans = {
+yearly: {
+name: 'Yearly Subscription',
+desc: 'Full access to all premium courses + live sessions',
+price: '882,244₮',
+usd: '≈ $249',
+purpose: 'jiliintulbur',
+qr: 'images/qpay-yearly.svg',
+qrAlt: 'QPay QR for Knowledge Hub yearly plan — 882,244 MNT',
+heroPlan: 'Yearly plan · Knowledge Hub',
+shortLabel: 'Yearly',
+descExample: 'Yearly — Your Name'
+},
+monthly: {
+name: 'Monthly Subscription',
+desc: 'Full access + monthly live Q&A',
+price: '88,000₮',
+usd: '≈ $29',
+purpose: 'Sariintulbur',
+qr: 'images/qpay-monthly.svg',
+qrAlt: 'QPay QR for Knowledge Hub monthly plan — 88,000 MNT',
+heroPlan: 'Monthly plan · Knowledge Hub',
+shortLabel: 'Monthly',
+descExample: 'Monthly — Your Name'
+},
+single: {
+name: 'Single Course',
+desc: 'Lifetime access to one premium course',
+price: '244,000₮',
+usd: '≈ $79',
+purpose: 'khicheeliintulbur',
+qr: 'images/qpay-single.svg',
+qrAlt: 'QPay QR for Knowledge Hub single course — 244,000 MNT',
+heroPlan: 'Single course · Knowledge Hub',
+shortLabel: 'Single course',
+descExample: 'Single course — Your Name'
+}
+};
+var cfg = plans[plan] || plans.yearly;
+if (!plans[plan]) plan = 'yearly';
+document.getElementById('plan-name').textContent = cfg.name;
+document.getElementById('plan-desc').textContent = cfg.desc;
+document.getElementById('plan-price').textContent = cfg.price;
+document.getElementById('subtotal').textContent = cfg.price;
+document.getElementById('usd-equiv').textContent = cfg.usd;
+document.getElementById('total').textContent = cfg.price;
+document.getElementById('purpose-tag').textContent = 'Purpose: ' + cfg.purpose;
+document.getElementById('hero-amount').textContent = cfg.price;
+document.getElementById('hero-plan').textContent = cfg.heroPlan;
+document.getElementById('bank-amount').textContent = cfg.price;
+document.getElementById('bank-plan-label').textContent = cfg.shortLabel;
+document.getElementById('bank-desc-example').textContent = cfg.descExample;
+var img = document.getElementById('qpay-qr');
+img.src = cfg.qr;
+img.alt = cfg.qrAlt;
+var twin = document.getElementById('lang-twin');
+if (twin) twin.href = 'checkout-mn.html?plan=' + encodeURIComponent(plan);
+function showMethod(method) {
+var qpay = method === 'qpay';
+document.getElementById('panel-qpay').classList.toggle('hidden', !qpay);
+document.getElementById('panel-bank').classList.toggle('hidden', qpay);
+document.getElementById('tab-qpay').classList.toggle('active', qpay);
+document.getElementById('tab-bank').classList.toggle('active', !qpay);
+}
+document.getElementById('tab-qpay').addEventListener('click', function () { showMethod('qpay'); });
+document.getElementById('tab-bank').addEventListener('click', function () { showMethod('bank'); });
+document.getElementById('copy-account').addEventListener('click', function () {
+var num = document.getElementById('account-number').textContent.trim();
+var btn = document.getElementById('copy-account');
+function ok() { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1500); }
+if (navigator.clipboard && navigator.clipboard.writeText) {
+navigator.clipboard.writeText(num).then(ok).catch(function () {
+window.getSelection().selectAllChildren(document.getElementById('account-number'));
+ok();
+});
+} else {
+window.getSelection().selectAllChildren(document.getElementById('account-number'));
+ok();
+}
+});
+})();
+</script>
+</body>
+</html>
