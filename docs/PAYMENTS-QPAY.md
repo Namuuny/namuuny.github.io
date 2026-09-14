@@ -38,3 +38,12 @@ Per-order invoices (unique amount, expiry, webhook confirmation) need:
 3. Replacing static QR images with API-generated QR / deeplinks
 
 Until then, the static merchant EMV QR payloads and the published TDB account are the official live path.
+
+
+## Bank app picker (QPay deeplinks)
+
+Checkout pages expose a clickable bank-app grid under the QR. Each chip opens:
+
+`{scheme}://q?qPay_QRcode=` + `encodeURIComponent(emvPayload)`
+
+EMV payloads are the same merchant QR strings embedded in `images/qpay-*.svg` (yearly / monthly / single). Logos hotlink from `qpay.mn` (`/q/logo/*.png` or `/q/img/*.webp`); missing images hide via `onerror`. TDB bank-transfer tab is unchanged. On desktop, deeplinks may no-op if the app is not installed — the QR remains the primary path.

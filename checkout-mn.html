@@ -36,6 +36,34 @@ border: 1px solid rgba(255, 255, 255, 0.08);
 .bank-chip {
 background: rgba(255, 255, 255, 0.04);
 border: 1px solid rgba(255, 255, 255, 0.08);
+transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+text-decoration: none;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 0.35rem;
+min-height: 4.25rem;
+}
+a.bank-chip:hover {
+border-color: rgba(45, 212, 191, 0.65);
+background: rgba(20, 184, 166, 0.1);
+transform: translateY(-1px);
+}
+a.bank-chip:focus-visible {
+outline: 2px solid rgba(45, 212, 191, 0.8);
+outline-offset: 2px;
+}
+.bank-chip img {
+width: 30px;
+height: 30px;
+object-fit: contain;
+border-radius: 6px;
+background: rgba(255, 255, 255, 0.92);
+padding: 2px;
+}
+.bank-chip .bank-chip-label {
+line-height: 1.2;
 }
 .method-tab.active {
 background: rgba(20, 184, 166, 0.15);
@@ -118,20 +146,9 @@ color: #2DD4BF;
 </p>
 </div>
 <div>
-<p class="text-center text-sm text-gray-500 mb-4">Эсвэл банкны апп сонгоно уу</p>
-<div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2.5" aria-label="Дэмжигдсэн банкны аппууд">
-<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">QPay</p></div>
-<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">Хаан банк</p></div>
-<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">SocialPay</p></div>
-<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">Төрийн банк</p></div>
-<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">Хас банк</p></div>
-<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">ХХБ</p></div>
-<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">Most</p></div>
-<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">Голомт</p></div>
-<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">Капитрон</p></div>
-<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">Богд</p></div>
-<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">M bank</p></div>
-<div class="bank-chip rounded-xl px-2 py-3 text-center"><p class="text-[11px] font-medium text-gray-200">Toki</p></div>
+<p class="text-center text-sm text-gray-300 mb-2 font-medium">Банкны апп сонгох</p>
+<p class="text-center text-xs text-gray-500 mb-4">Утсаар: банкны апп дээр дар. Компьютер дээр: QR-ийг уншуулна уу.</p>
+<div id="bank-app-grid" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2.5" aria-label="Банкны апп сонгох">
 </div>
 </div>
 </div>
@@ -222,6 +239,78 @@ shortLabel: 'Нэг хичээл',
 descExample: 'Нэг хичээл — Таны нэр'
 }
 };
+var BANKS = [
+  { label: 'QPay Wallet', scheme: 'qpaywallet', logo: 'https://qpay.mn/q/img/qpay-wallet.webp' },
+  { label: 'Khan Bank', scheme: 'khanbank', logo: 'https://qpay.mn/q/logo/khanbank.png' },
+  { label: 'SocialPay', scheme: 'socialpay-payment', logo: 'https://qpay.mn/q/logo/socialpay.png' },
+  { label: 'State Bank', scheme: 'statebankmongolia', logo: 'https://qpay.mn/q/logo/statebank.png' },
+  { label: 'XacBank', scheme: 'xacbank', logo: 'https://qpay.mn/q/logo/xacbank.png' },
+  { label: 'TDB Online', scheme: 'tdbbank', logo: 'https://qpay.mn/q/logo/tdbbank.png' },
+  { label: 'Most Money', scheme: 'most', logo: 'https://qpay.mn/q/logo/most.png' },
+  { label: 'Capitron', scheme: 'capitronbank', logo: 'https://qpay.mn/q/logo/capitronbank.png' },
+  { label: 'Bogd', scheme: 'bogdbank', logo: 'https://qpay.mn/q/logo/bogdbank.png' },
+  { label: 'M bank', scheme: 'mbank', logo: 'https://qpay.mn/q/logo/mbank.png' },
+  { label: 'Toki', scheme: 'toki', logo: 'https://qpay.mn/q/img/tokipay.webp' },
+  { label: 'Monpay', scheme: 'monpay', logo: 'https://qpay.mn/q/logo/monpay.png' },
+  { label: 'Chinggis Khaan', scheme: 'ckbank', logo: 'https://qpay.mn/q/logo/ckbank.png' },
+  { label: 'NIBank', scheme: 'nibank', logo: 'https://qpay.mn/q/img/nibank.webp' },
+  { label: 'Transbank', scheme: 'transbank', logo: 'https://qpay.mn/q/logo/transbank.png' },
+  { label: 'Arig', scheme: 'arig', logo: 'https://qpay.mn/q/logo/arig.png' },
+  { label: 'Ard', scheme: 'ard', logo: 'https://qpay.mn/q/logo/ard.png' },
+  { label: 'Hipay', scheme: 'hipay', logo: 'https://qpay.mn/q/logo/hipay.png' },
+  { label: 'Happy Pay', scheme: 'tdbwallet', logo: 'https://qpay.mn/q/logo/tdbwallet.png' },
+  { label: 'Sono', scheme: 'sono', logo: 'https://qpay.mn/q/logo/sono.png' },
+  { label: 'PayOn', scheme: 'payon', logo: 'https://qpay.mn/q/logo/payon.png' },
+  { label: 'Tino', scheme: 'tino', logo: 'https://qpay.mn/q/logo/tino.png' },
+];
+var EMV = {
+  yearly: '00020101021126540014A00000084300010108TDBMMNUB02200000000000000021338752047299530349654068822445802MN5906NAMUUN6011ULAANBAATAR61051420062400508825094430812jiliintulbur5008MOSTMNUB800202630447E7',
+  monthly: '00020101021126540014A00000084300010108TDBMMNUB0220000000000000002133875204729953034965405880005802MN5906NAMUUN6011ULAANBAATAR61051420062400508825094590812Sariintulbur5008MOSTMNUB80020263042DD4',
+  single: '00020101021126540014A00000084300010108TDBMMNUB02200000000000000021338752047299530349654062440005802MN5906NAMUUN6011ULAANBAATAR61051420062450508825094610817khicheeliintulbur5008MOSTMNUB80020263040C17'
+};
+function deeplinkFor(scheme, emvPayload) {
+  return scheme + '://q?qPay_QRcode=' + encodeURIComponent(emvPayload);
+}
+function renderBankChips(emvPayload) {
+  var grid = document.getElementById('bank-app-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  BANKS.forEach(function (bank) {
+    var a = document.createElement('a');
+    a.className = 'bank-chip rounded-xl px-2 py-2.5 text-center';
+    a.href = deeplinkFor(bank.scheme, emvPayload);
+    a.setAttribute('data-scheme', bank.scheme);
+    a.setAttribute('aria-label', bank.label);
+    a.rel = 'noopener noreferrer';
+    var img = document.createElement('img');
+    img.src = bank.logo;
+    img.alt = '';
+    img.width = 30;
+    img.height = 30;
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.onerror = function () { this.style.display = 'none'; };
+    var label = document.createElement('p');
+    label.className = 'bank-chip-label text-[11px] font-medium text-gray-200';
+    label.textContent = bank.label;
+    a.appendChild(img);
+    a.appendChild(label);
+    grid.appendChild(a);
+  });
+}
+function updateBankChipHrefs(emvPayload) {
+  var grid = document.getElementById('bank-app-grid');
+  if (!grid) return;
+  var links = grid.querySelectorAll('a.bank-chip[data-scheme]');
+  if (!links.length) {
+    renderBankChips(emvPayload);
+    return;
+  }
+  links.forEach(function (a) {
+    a.href = deeplinkFor(a.getAttribute('data-scheme'), emvPayload);
+  });
+}
+
 var cfg = plans[plan] || plans.yearly;
 if (!plans[plan]) plan = 'yearly';
 document.getElementById('plan-name').textContent = cfg.name;
@@ -239,6 +328,7 @@ document.getElementById('bank-desc-example').textContent = cfg.descExample;
 var img = document.getElementById('qpay-qr');
 img.src = cfg.qr;
 img.alt = cfg.qrAlt;
+renderBankChips(EMV[plan] || EMV.yearly);
 var twin = document.getElementById('lang-twin');
 if (twin) twin.href = 'checkout.html?plan=' + encodeURIComponent(plan);
 function showMethod(method) {
